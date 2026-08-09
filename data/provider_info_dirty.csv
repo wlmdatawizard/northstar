@@ -1,0 +1,51 @@
+PROVIDER_ID,ORGANIZATION_ID,PROVIDER_NAME,SPECIALTY,NPI
+379e1599-0032-362a-83fb-7f28ddfb3871,3c40342c-da96-5e2f-9978-2cfe6db6380d,Milford Olson,Obstetrics and Gynecology,1900000001
+dc940658-fd6f-3812-a4dc-8601d05aa7f4,2451ce7b-281c-5309-9383-0976e52f535c,Philip Ziemann,Cardiology,1900000002
+ca1a697c-76e8-3d7d-b78a-b41a132fd854,d50afb65-1d76-5297-a76b-25ec8a1e08b2,Scottie Kuhn,Dermatology,1900000003
+c876aac3-8c7e-3a0d-997f-e796d7d5c3db,3f417093-9591-54fa-8e89-62fdab16a398,Theodora Yundt,Urgent Care,1900000004
+adda5c03-0c7b-32e2-a457-2626dfc81e2a,fec57d15-486f-57ec-b809-c978562e8865,Louetta Walsh,Family Medicine,1900000005
+ad7acb11-94e7-337c-9ebc-1fb69135a644,d0f52152-9a85-52c8-8397-9cd145941cdd,Elisha Toy,Pediatrics,1900000006
+c8432393-9a0f-342e-bc3b-922c7ff3eee3,d0f52152-9a85-52c8-8397-9cd145941cdd,Jeramy Quigley,Pediatrics,1900000007
+9c353cd0-b3d0-3f16-b708-b11f5a03009d,b124a580-eb0c-5a8c-9af4-13eb91cef0ff,Marcelino Terry,Internal Medicine,1900000008
+54b06aec-62f4-347c-bd09-165cbba80360,3c40342c-da96-5e2f-9978-2cfe6db6380d,Leonor Nájera,Obstetrics and Gynecology,1900000009
+460c4e75-95d7-3b38-ab21-a05afa29dfac,79089f93-7da4-56a0-86d4-3fe8c11518be,ESTER VALLEJO,Endocrinology,1900000010
+84f8ae49-960d-3689-a4f9-6c3f11678848,6f2a9893-b972-59ac-ab56-16abdd42a222,Darcie Pfeffer,Behavioral Health,1900000011
+526848d0-1d53-33d9-9e9d-cd1afca52aa7,fec57d15-486f-57ec-b809-c978562e8865,Drusilla Bauch,Family Medicine,1900000012
+bbce7d22-e056-34c4-8013-6ca4332e3fb5,2451ce7b-281c-5309-9383-0976e52f535c,Kendal Hoppe,Cardiology,1900000013
+f250b804-bb66-3378-a570-967aa25409e2,d50afb65-1d76-5297-a76b-25ec8a1e08b2,Dale Kessler,Dermatology,1900000014
+69743080-801f-33ae-823e-53b426e15026,938e7b87-1b88-5f5c-a1a4-2976b3939d50,Kandi Hermann,Family Medicine,1900000015
+1b75d7a2-3964-340e-b025-c5e2d3506244,d0f52152-9a85-52c8-8397-9cd145941cdd,Jeramy Littel,Pediatrics,1900000016
+1b36d2ba-7a2f-38e9-ad31-6c1fe4023901,6f2a9893-b972-59ac-ab56-16abdd42a222,  Tana Weimann ,Behavioral Health,1900000017
+78320f58-6de6-3c15-8be1-ead01d95828d,3f417093-9591-54fa-8e89-62fdab16a398,Sydney Roob,Urgent Care,1900000018
+163f7daa-bfba-33a8-9ea2-554587a3cbef,fec57d15-486f-57ec-b809-c978562e8865,Rickie Hauck,Family Medicine,1900000019
+80f4ec44-c5c5-3925-80fa-512f3e8bd06f,3f417093-9591-54fa-8e89-62fdab16a398,Adelia Blick,Urgent Care,1900000020
+08539150-3673-333b-b5d5-e6f3adde8870,6f2a9893-b972-59ac-ab56-16abdd42a222,Hassan Rath,Behavioral Health,1900000021
+4221dffb-da1c-3f1e-96c2-e58df6ec7b01,938e7b87-1b88-5f5c-a1a4-2976b3939d50,Glenn Feeney,Family Medicine,1900000022
+2fb72eaa-41d3-3c7d-a726-dc2489e10959,fec57d15-486f-57ec-b809-c978562e8865,Mary Hirthe,Family Medicine,1900000023
+06f0ed2a-9724-3524-8dfb-2a10b94c82b6,79089f93-7da4-56a0-86d4-3fe8c11518be,Lenore Moen,Endocrinology,1900000024
+8cddbb1b-7e2c-3bf0-957e-bc62c160cfc5,d0f52152-9a85-52c8-8397-9cd145941cdd,Rivka Sanford,Pediatrics,1900000025
+58b66cc1-2b86-377f-ad77-ad8164388e50,2451ce7b-281c-5309-9383-0976e52f535c,Veda Pfeffer,Cardiology,1900000026
+d25c2007-7607-3599-904b-3c558cbeb6c3,b124a580-eb0c-5a8c-9af4-13eb91cef0ff,Teressa Moore,Internal Medicine,1900000027
+60f8ab2a-3f88-38c0-97f5-fdd71ccd04ba,938e7b87-1b88-5f5c-a1a4-2976b3939d50,Elton VonRueden,Family Medicine,1900000028
+e2a4bf3b-ca54-3e59-b3fb-86782cb88617,b124a580-eb0c-5a8c-9af4-13eb91cef0ff,Jesús Quiroz,internal medicine,1900000029
+d0da8411-8e1b-3024-91e3-795c8db29962,b124a580-eb0c-5a8c-9af4-13eb91cef0ff,Alessandra Predovic,Internal Medicine,1900000030
+6d39ef49-708a-33a9-9a15-ff05e78ac379,d50afb65-1d76-5297-a76b-25ec8a1e08b2,Pok Waelchi,Dermatology,1900000031
+f3a7d874-d091-3c76-b5f9-0a007451a1a6,938e7b87-1b88-5f5c-a1a4-2976b3939d50,Daniela Carrasco,Family Medicine,1900000032
+64adf5bf-f9a4-3ff8-8e96-cad97cc37135,3c40342c-da96-5e2f-9978-2cfe6db6380d,RILEY HOWELL,Obstetrics and Gynecology,1900000033
+4e992564-25e3-3dc5-a7e0-9fa464e37bbb,fec57d15-486f-57ec-b809-c978562e8865,Verona Romaguera,Family Medicine,1900000034
+e7d8744e-8525-3ee3-ad9d-a352dd333eea,3c40342c-da96-5e2f-9978-2cfe6db6380d,Ernestine Brown,Obstetrics and Gynecology,1900000035
+de5364b2-0a08-36f8-ab63-c6455f9cded8,3f417093-9591-54fa-8e89-62fdab16a398,Olympia Schulist,Urgent Care,1900000036
+1cd507b3-be67-3afe-a0cf-dbbddb080d0f,b124a580-eb0c-5a8c-9af4-13eb91cef0ff,Bryant Murazik,Internal Medicine,1900000037
+9d84a86a-f2ae-33c5-b40e-b57e2ee597ea,d50afb65-1d76-5297-a76b-25ec8a1e08b2,Ethan Gottlieb,Dermatology,1900000038
+4ad998df-d944-37d1-b4dc-dca9350e697d,938e7b87-1b88-5f5c-a1a4-2976b3939d50,Gwenn Breitenberg,Family Medicine,1900000039
+5bee674e-0d19-3b32-a207-7bd7d46e6da2,3c40342c-da96-5e2f-9978-2cfe6db6380d,Concepción Orta,Obstetrics and Gynecology,1900000040
+4519b82e-e64b-3803-a7d6-3c361040a4dc,3f417093-9591-54fa-8e89-62fdab16a398,Ruthanne Rogahn,Urgent Care,1900000041
+5601b341-9681-31d7-bd95-af5b092f6c4d,2451ce7b-281c-5309-9383-0976e52f535c,Farrah Gaylord,cardiology,190000004
+dc5ae10e-9506-3343-b87b-a81232af888d,2451ce7b-281c-5309-9383-0976e52f535c,Perry Wiegand,Cardiology,1900000043
+17829014-3198-3566-8214-373ded391018,79089f93-7da4-56a0-86d4-3fe8c11518be,NOEL SAWAYN,Endocrinology,1900000044
+a8e3eee3-1b94-3c25-9163-7193b644e76e,79089f93-7da4-56a0-86d4-3fe8c11518be,Wava Walter,Endocrinology,1900000045
+3d7e5bab-fea0-399d-9c09-4631456925a6,6f2a9893-b972-59ac-ab56-16abdd42a222,Tyra Runte,Behavioral Health,1900000046
+28de4ec5-49de-3dee-aff5-9902aa4a83ad,d50afb65-1d76-5297-a76b-25ec8a1e08b2,Harry Lang,dermatology,1900000047
+b2df4b34-283b-3754-a776-cd3c9adfa025,6f2a9893-b972-59ac-ab56-16abdd42a222,Alecia Gleichner,Behavioral Health,1900000048
+bdefd926-a523-3d06-b9bf-ebb7f7ea5543,d0f52152-9a85-52c8-8397-9cd145941cdd,Abram Ebert,Pediatrics,1900000049
+9fd46a5e-f7fa-3ff5-86ad-8ca0aad4c4fe,79089f93-7da4-56a0-86d4-3fe8c11518be,Laquita Gulgowski,Endocrinology,190000005
