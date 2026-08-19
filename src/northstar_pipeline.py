@@ -249,6 +249,33 @@ def reconcile_load_counts(source_counts, before_counts, after_counts):
     return results
 
 
+def process_validated_load(cursor, validation_results):
+    all_valid = True
+
+    for _, rows in validation_results:
+        if rows:
+            all_valid = False
+
+    if all_valid:
+        source_counts = get_source_row_counts()
+        before_counts = get_raw_counts(cursor)
+
+        load_results = load_raw_tables(cursor)
+
+        after_counts = get_raw_counts(cursor)
+
+        reconciliation_results = reconcile_load_counts(
+            source_counts,
+            before_counts,
+            after_counts
+        )
+    else:
+        load_results = None
+        reconciliation_results = None
+
+    return all_valid, load_results, reconciliation_results
+
+
 def print_upload_results(upload_results):
     for file_name, rows in upload_results:
         print(f"\nUploaded: {file_name}")
@@ -331,33 +358,6 @@ def print_pipeline_results(upload_results, staged_files, validation_results, all
     print_validation_results(validation_results, all_valid)
     print_load_results(load_results)
     print_reconciliation_results(reconciliation_results)
-
-
-def process_validated_load(cursor, validation_results):
-    all_valid = True
-
-    for _, rows in validation_results:
-        if rows:
-            all_valid = False
-
-    if all_valid:
-        source_counts = get_source_row_counts()
-        before_counts = get_raw_counts(cursor)
-
-        load_results = load_raw_tables(cursor)
-
-        after_counts = get_raw_counts(cursor)
-
-        reconciliation_results = reconcile_load_counts(
-            source_counts,
-            before_counts,
-            after_counts
-        )
-    else:
-        load_results = None
-        reconciliation_results = None
-
-    return all_valid, load_results, reconciliation_results
 
 
 def main():
