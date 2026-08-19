@@ -1,0 +1,2000 @@
+{
+    "type": {
+        "object": {
+            "type": "type",
+            "module": "builtins",
+            "class_name": "type"
+        },
+        "methods": {
+            "public": {
+                "authenticate_with_retry": {
+                    "signature": "(self, auth_instance) -> 'None'",
+                    "parameters": [
+                        {
+                            "name": "self",
+                            "kind": "POSITIONAL_OR_KEYWORD",
+                            "annotation": null,
+                            "type": null,
+                            "default": null,
+                            "required": true
+                        },
+                        {
+                            "name": "auth_instance",
+                            "kind": "POSITIONAL_OR_KEYWORD",
+                            "annotation": null,
+                            "type": null,
+                            "default": null,
+                            "required": true
+                        }
+                    ],
+                    "return": {
+                        "annotation": "None",
+                        "type": "None",
+                        "category": "void"
+                    }
+                },
+                "autocommit": {
+                    "signature": "(self, mode) -> 'None'",
+                    "parameters": [
+                        {
+                            "name": "self",
+                            "kind": "POSITIONAL_OR_KEYWORD",
+                            "annotation": null,
+                            "type": null,
+                            "default": null,
+                            "required": true
+                        },
+                        {
+                            "name": "mode",
+                            "kind": "POSITIONAL_OR_KEYWORD",
+                            "annotation": null,
+                            "type": null,
+                            "default": null,
+                            "required": true
+                        }
+                    ],
+                    "return": {
+                        "annotation": "None",
+                        "type": "None",
+                        "category": "void"
+                    }
+                },
+                "close": {
+                    "signature": "(self, retry: 'bool' = True) -> 'None'",
+                    "parameters": [
+                        {
+                            "name": "self",
+                            "kind": "POSITIONAL_OR_KEYWORD",
+                            "annotation": null,
+                            "type": null,
+                            "default": null,
+                            "required": true
+                        },
+                        {
+                            "name": "retry",
+                            "kind": "POSITIONAL_OR_KEYWORD",
+                            "annotation": "bool",
+                            "type": "bool",
+                            "default": "True",
+                            "required": false
+                        }
+                    ],
+                    "return": {
+                        "annotation": "None",
+                        "type": "None",
+                        "category": "void"
+                    }
+                },
+                "cmd_query": {
+                    "signature": "(self, sql: 'str', sequence_counter: 'int', request_id: 'uuid.UUID', binding_params: 'None | tuple | dict[str, dict[str, str]]' = None, binding_stage: 'str | None' = None, is_file_transfer: 'bool' = False, statement_params: 'dict[str, str] | None' = None, is_internal: 'bool' = False, describe_only: 'bool' = False, _no_results: 'bool' = False, _update_current_object: 'bool' = True, _no_retry: 'bool' = False, timeout: 'int | None' = None, dataframe_ast: 'str | None' = None) -> 'dict[str, Any]'",
+                    "parameters": [
+                        {
+                            "name": "self",
+                            "kind": "POSITIONAL_OR_KEYWORD",
+                            "annotation": null,
+                            "type": null,
+                            "default": null,
+                            "required": true
+                        },
+                        {
+                            "name": "sql",
+                            "kind": "POSITIONAL_OR_KEYWORD",
+                            "annotation": "str",
+                            "type": "str",
+                            "default": null,
+                            "required": true
+                        },
+                        {
+                            "name": "sequence_counter",
+                            "kind": "POSITIONAL_OR_KEYWORD",
+                            "annotation": "int",
+                            "type": "int",
+                            "default": null,
+                            "required": true
+                        },
+                        {
+                            "name": "request_id",
+                            "kind": "POSITIONAL_OR_KEYWORD",
+                            "annotation": "uuid.UUID",
+                            "type": "UUID",
+                            "default": null,
+                            "required": true
+                        },
+                        {
+                            "name": "binding_params",
+                            "kind": "POSITIONAL_OR_KEYWORD",
+                            "annotation": "None | tuple | dict[str, dict[str, str]]",
+                            "type": "None | tuple | dict[str, dict[str, str]]",
+                            "default": "None",
+                            "required": false
+                        },
+                        {
+                            "name": "binding_stage",
+                            "kind": "POSITIONAL_OR_KEYWORD",
+                            "annotation": "str | None",
+                            "type": "str | None",
+                            "default": "None",
+                            "required": false
+                        },
+                        {
+                            "name": "is_file_transfer",
+                            "kind": "POSITIONAL_OR_KEYWORD",
+                            "annotation": "bool",
+                            "type": "bool",
+                            "default": "False",
+                            "required": false
+                        },
+                        {
+                            "name": "statement_params",
+                            "kind": "POSITIONAL_OR_KEYWORD",
+                            "annotation": "dict[str, str] | None",
+                            "type": "dict[str, str] | None",
+                            "default": "None",
+                            "required": false
+                        },
+                        {
+                            "name": "is_internal",
+                            "kind": "POSITIONAL_OR_KEYWORD",
+                            "annotation": "bool",
+                            "type": "bool",
+                            "default": "False",
+                            "required": false
+                        },
+                        {
+                            "name": "describe_only",
+                            "kind": "POSITIONAL_OR_KEYWORD",
+                            "annotation": "bool",
+                            "type": "bool",
+                            "default": "False",
+                            "required": false
+                        },
+                        {
+                            "name": "_no_results",
+                            "kind": "POSITIONAL_OR_KEYWORD",
+                            "annotation": "bool",
+                            "type": "bool",
+                            "default": "False",
+                            "required": false
+                        },
+                        {
+                            "name": "_update_current_object",
+                            "kind": "POSITIONAL_OR_KEYWORD",
+                            "annotation": "bool",
+                            "type": "bool",
+                            "default": "True",
+                            "required": false
+                        },
+                        {
+                            "name": "_no_retry",
+                            "kind": "POSITIONAL_OR_KEYWORD",
+                            "annotation": "bool",
+                            "type": "bool",
+                            "default": "False",
+                            "required": false
+                        },
+                        {
+                            "name": "timeout",
+                            "kind": "POSITIONAL_OR_KEYWORD",
+                            "annotation": "int | None",
+                            "type": "int | None",
+                            "default": "None",
+                            "required": false
+                        },
+                        {
+                            "name": "dataframe_ast",
+                            "kind": "POSITIONAL_OR_KEYWORD",
+                            "annotation": "str | None",
+                            "type": "str | None",
+                            "default": "None",
+                            "required": false
+                        }
+                    ],
+                    "return": {
+                        "annotation": "dict[str, Any]",
+                        "type": "dict[str, Any]",
+                        "category": "object"
+                    }
+                },
+                "commit": {
+                    "signature": "(self) -> 'None'",
+                    "parameters": [
+                        {
+                            "name": "self",
+                            "kind": "POSITIONAL_OR_KEYWORD",
+                            "annotation": null,
+                            "type": null,
+                            "default": null,
+                            "required": true
+                        }
+                    ],
+                    "return": {
+                        "annotation": "None",
+                        "type": "None",
+                        "category": "void"
+                    }
+                },
+                "connect": {
+                    "signature": "(self, **kwargs) -> 'None'",
+                    "parameters": [
+                        {
+                            "name": "self",
+                            "kind": "POSITIONAL_OR_KEYWORD",
+                            "annotation": null,
+                            "type": null,
+                            "default": null,
+                            "required": true
+                        },
+                        {
+                            "name": "kwargs",
+                            "kind": "VAR_KEYWORD",
+                            "annotation": null,
+                            "type": null,
+                            "default": null,
+                            "required": false
+                        }
+                    ],
+                    "return": {
+                        "annotation": "None",
+                        "type": "None",
+                        "category": "void"
+                    }
+                },
+                "cursor": {
+                    "signature": "(self, cursor_class: 'type[CursorCls]' = <class 'snowflake.connector.cursor.SnowflakeCursor'>) -> 'CursorCls'",
+                    "parameters": [
+                        {
+                            "name": "self",
+                            "kind": "POSITIONAL_OR_KEYWORD",
+                            "annotation": null,
+                            "type": null,
+                            "default": null,
+                            "required": true
+                        },
+                        {
+                            "name": "cursor_class",
+                            "kind": "POSITIONAL_OR_KEYWORD",
+                            "annotation": "type[CursorCls]",
+                            "type": "type[CursorCls]",
+                            "default": "<class 'snowflake.connector.cursor.SnowflakeCursor'>",
+                            "required": false
+                        }
+                    ],
+                    "return": {
+                        "annotation": "CursorCls",
+                        "type": "CursorCls",
+                        "category": "object"
+                    }
+                },
+                "execute_stream": {
+                    "signature": "(self, stream: 'StringIO', remove_comments: 'bool' = False, cursor_class: 'SnowflakeCursor' = <class 'snowflake.connector.cursor.SnowflakeCursor'>, **kwargs) -> 'Generator[SnowflakeCursor]'",
+                    "parameters": [
+                        {
+                            "name": "self",
+                            "kind": "POSITIONAL_OR_KEYWORD",
+                            "annotation": null,
+                            "type": null,
+                            "default": null,
+                            "required": true
+                        },
+                        {
+                            "name": "stream",
+                            "kind": "POSITIONAL_OR_KEYWORD",
+                            "annotation": "StringIO",
+                            "type": "StringIO",
+                            "default": null,
+                            "required": true
+                        },
+                        {
+                            "name": "remove_comments",
+                            "kind": "POSITIONAL_OR_KEYWORD",
+                            "annotation": "bool",
+                            "type": "bool",
+                            "default": "False",
+                            "required": false
+                        },
+                        {
+                            "name": "cursor_class",
+                            "kind": "POSITIONAL_OR_KEYWORD",
+                            "annotation": "SnowflakeCursor",
+                            "type": "SnowflakeCursor",
+                            "default": "<class 'snowflake.connector.cursor.SnowflakeCursor'>",
+                            "required": false
+                        },
+                        {
+                            "name": "kwargs",
+                            "kind": "VAR_KEYWORD",
+                            "annotation": null,
+                            "type": null,
+                            "default": null,
+                            "required": false
+                        }
+                    ],
+                    "return": {
+                        "annotation": "Generator[SnowflakeCursor]",
+                        "type": "Generator[SnowflakeCursor]",
+                        "category": "object"
+                    }
+                },
+                "execute_string": {
+                    "signature": "(self, sql_text: 'str', remove_comments: 'bool' = False, return_cursors: 'bool' = True, cursor_class: 'SnowflakeCursor' = <class 'snowflake.connector.cursor.SnowflakeCursor'>, **kwargs) -> 'Iterable[SnowflakeCursor]'",
+                    "parameters": [
+                        {
+                            "name": "self",
+                            "kind": "POSITIONAL_OR_KEYWORD",
+                            "annotation": null,
+                            "type": null,
+                            "default": null,
+                            "required": true
+                        },
+                        {
+                            "name": "sql_text",
+                            "kind": "POSITIONAL_OR_KEYWORD",
+                            "annotation": "str",
+                            "type": "str",
+                            "default": null,
+                            "required": true
+                        },
+                        {
+                            "name": "remove_comments",
+                            "kind": "POSITIONAL_OR_KEYWORD",
+                            "annotation": "bool",
+                            "type": "bool",
+                            "default": "False",
+                            "required": false
+                        },
+                        {
+                            "name": "return_cursors",
+                            "kind": "POSITIONAL_OR_KEYWORD",
+                            "annotation": "bool",
+                            "type": "bool",
+                            "default": "True",
+                            "required": false
+                        },
+                        {
+                            "name": "cursor_class",
+                            "kind": "POSITIONAL_OR_KEYWORD",
+                            "annotation": "SnowflakeCursor",
+                            "type": "SnowflakeCursor",
+                            "default": "<class 'snowflake.connector.cursor.SnowflakeCursor'>",
+                            "required": false
+                        },
+                        {
+                            "name": "kwargs",
+                            "kind": "VAR_KEYWORD",
+                            "annotation": null,
+                            "type": null,
+                            "default": null,
+                            "required": false
+                        }
+                    ],
+                    "return": {
+                        "annotation": "Iterable[SnowflakeCursor]",
+                        "type": "Iterable[SnowflakeCursor]",
+                        "category": "object"
+                    }
+                },
+                "get_query_context": {
+                    "signature": "(self) -> 'dict | None'",
+                    "parameters": [
+                        {
+                            "name": "self",
+                            "kind": "POSITIONAL_OR_KEYWORD",
+                            "annotation": null,
+                            "type": null,
+                            "default": null,
+                            "required": true
+                        }
+                    ],
+                    "return": {
+                        "annotation": "dict | None",
+                        "type": "dict | None",
+                        "category": "object"
+                    }
+                },
+                "get_query_status": {
+                    "signature": "(self, sf_qid: 'str') -> 'QueryStatus'",
+                    "parameters": [
+                        {
+                            "name": "self",
+                            "kind": "POSITIONAL_OR_KEYWORD",
+                            "annotation": null,
+                            "type": null,
+                            "default": null,
+                            "required": true
+                        },
+                        {
+                            "name": "sf_qid",
+                            "kind": "POSITIONAL_OR_KEYWORD",
+                            "annotation": "str",
+                            "type": "str",
+                            "default": null,
+                            "required": true
+                        }
+                    ],
+                    "return": {
+                        "annotation": "QueryStatus",
+                        "type": "QueryStatus",
+                        "category": "object"
+                    }
+                },
+                "get_query_status_throw_if_error": {
+                    "signature": "(self, sf_qid: 'str') -> 'QueryStatus'",
+                    "parameters": [
+                        {
+                            "name": "self",
+                            "kind": "POSITIONAL_OR_KEYWORD",
+                            "annotation": null,
+                            "type": null,
+                            "default": null,
+                            "required": true
+                        },
+                        {
+                            "name": "sf_qid",
+                            "kind": "POSITIONAL_OR_KEYWORD",
+                            "annotation": "str",
+                            "type": "str",
+                            "default": null,
+                            "required": true
+                        }
+                    ],
+                    "return": {
+                        "annotation": "QueryStatus",
+                        "type": "QueryStatus",
+                        "category": "object"
+                    }
+                },
+                "initialize_query_context_cache": {
+                    "signature": "(self) -> 'None'",
+                    "parameters": [
+                        {
+                            "name": "self",
+                            "kind": "POSITIONAL_OR_KEYWORD",
+                            "annotation": null,
+                            "type": null,
+                            "default": null,
+                            "required": true
+                        }
+                    ],
+                    "return": {
+                        "annotation": "None",
+                        "type": "None",
+                        "category": "void"
+                    }
+                },
+                "is_an_error": {
+                    "signature": "(status: 'QueryStatus') -> 'bool'",
+                    "parameters": [
+                        {
+                            "name": "status",
+                            "kind": "POSITIONAL_OR_KEYWORD",
+                            "annotation": "QueryStatus",
+                            "type": "QueryStatus",
+                            "default": null,
+                            "required": true
+                        }
+                    ],
+                    "return": {
+                        "annotation": "bool",
+                        "type": "bool",
+                        "category": "object"
+                    }
+                },
+                "is_closed": {
+                    "signature": "(self) -> 'bool'",
+                    "parameters": [
+                        {
+                            "name": "self",
+                            "kind": "POSITIONAL_OR_KEYWORD",
+                            "annotation": null,
+                            "type": null,
+                            "default": null,
+                            "required": true
+                        }
+                    ],
+                    "return": {
+                        "annotation": "bool",
+                        "type": "bool",
+                        "category": "object"
+                    }
+                },
+                "is_still_running": {
+                    "signature": "(status: 'QueryStatus') -> 'bool'",
+                    "parameters": [
+                        {
+                            "name": "status",
+                            "kind": "POSITIONAL_OR_KEYWORD",
+                            "annotation": "QueryStatus",
+                            "type": "QueryStatus",
+                            "default": null,
+                            "required": true
+                        }
+                    ],
+                    "return": {
+                        "annotation": "bool",
+                        "type": "bool",
+                        "category": "object"
+                    }
+                },
+                "is_valid": {
+                    "signature": "(self) -> 'bool'",
+                    "parameters": [
+                        {
+                            "name": "self",
+                            "kind": "POSITIONAL_OR_KEYWORD",
+                            "annotation": null,
+                            "type": null,
+                            "default": null,
+                            "required": true
+                        }
+                    ],
+                    "return": {
+                        "annotation": "bool",
+                        "type": "bool",
+                        "category": "object"
+                    }
+                },
+                "rollback": {
+                    "signature": "(self) -> 'None'",
+                    "parameters": [
+                        {
+                            "name": "self",
+                            "kind": "POSITIONAL_OR_KEYWORD",
+                            "annotation": null,
+                            "type": null,
+                            "default": null,
+                            "required": true
+                        }
+                    ],
+                    "return": {
+                        "annotation": "None",
+                        "type": "None",
+                        "category": "void"
+                    }
+                },
+                "set_query_context": {
+                    "signature": "(self, data: 'dict') -> 'None'",
+                    "parameters": [
+                        {
+                            "name": "self",
+                            "kind": "POSITIONAL_OR_KEYWORD",
+                            "annotation": null,
+                            "type": null,
+                            "default": null,
+                            "required": true
+                        },
+                        {
+                            "name": "data",
+                            "kind": "POSITIONAL_OR_KEYWORD",
+                            "annotation": "dict",
+                            "type": "dict",
+                            "default": null,
+                            "required": true
+                        }
+                    ],
+                    "return": {
+                        "annotation": "None",
+                        "type": "None",
+                        "category": "void"
+                    }
+                },
+                "setup_ocsp_privatelink": {
+                    "signature": "(app, hostname) -> 'None'",
+                    "parameters": [
+                        {
+                            "name": "app",
+                            "kind": "POSITIONAL_OR_KEYWORD",
+                            "annotation": null,
+                            "type": null,
+                            "default": null,
+                            "required": true
+                        },
+                        {
+                            "name": "hostname",
+                            "kind": "POSITIONAL_OR_KEYWORD",
+                            "annotation": null,
+                            "type": null,
+                            "default": null,
+                            "required": true
+                        }
+                    ],
+                    "return": {
+                        "annotation": "None",
+                        "type": "None",
+                        "category": "void"
+                    }
+                }
+            },
+            "private": {
+                "_SnowflakeConnection__config": {
+                    "signature": "(self, **kwargs)",
+                    "parameters": [
+                        {
+                            "name": "self",
+                            "kind": "POSITIONAL_OR_KEYWORD",
+                            "annotation": null,
+                            "type": null,
+                            "default": null,
+                            "required": true
+                        },
+                        {
+                            "name": "kwargs",
+                            "kind": "VAR_KEYWORD",
+                            "annotation": null,
+                            "type": null,
+                            "default": null,
+                            "required": false
+                        }
+                    ],
+                    "return": {
+                        "annotation": null,
+                        "type": null,
+                        "category": "not_annotated"
+                    }
+                },
+                "_SnowflakeConnection__open_connection": {
+                    "signature": "(self)",
+                    "parameters": [
+                        {
+                            "name": "self",
+                            "kind": "POSITIONAL_OR_KEYWORD",
+                            "annotation": null,
+                            "type": null,
+                            "default": null,
+                            "required": true
+                        }
+                    ],
+                    "return": {
+                        "annotation": null,
+                        "type": null,
+                        "category": "not_annotated"
+                    }
+                },
+                "_SnowflakeConnection__set_error_attributes": {
+                    "signature": "(self) -> 'None'",
+                    "parameters": [
+                        {
+                            "name": "self",
+                            "kind": "POSITIONAL_OR_KEYWORD",
+                            "annotation": null,
+                            "type": null,
+                            "default": null,
+                            "required": true
+                        }
+                    ],
+                    "return": {
+                        "annotation": "None",
+                        "type": "None",
+                        "category": "void"
+                    }
+                },
+                "__class__": {
+                    "signature": null,
+                    "parameters": [],
+                    "return": {
+                        "annotation": null,
+                        "type": null,
+                        "category": "not_annotated"
+                    }
+                },
+                "__delattr__": {
+                    "signature": "(self, name, /)",
+                    "parameters": [
+                        {
+                            "name": "self",
+                            "kind": "POSITIONAL_ONLY",
+                            "annotation": null,
+                            "type": null,
+                            "default": null,
+                            "required": true
+                        },
+                        {
+                            "name": "name",
+                            "kind": "POSITIONAL_ONLY",
+                            "annotation": null,
+                            "type": null,
+                            "default": null,
+                            "required": true
+                        }
+                    ],
+                    "return": {
+                        "annotation": null,
+                        "type": null,
+                        "category": "not_annotated"
+                    }
+                },
+                "__dir__": {
+                    "signature": "(self, /)",
+                    "parameters": [
+                        {
+                            "name": "self",
+                            "kind": "POSITIONAL_ONLY",
+                            "annotation": null,
+                            "type": null,
+                            "default": null,
+                            "required": true
+                        }
+                    ],
+                    "return": {
+                        "annotation": null,
+                        "type": null,
+                        "category": "not_annotated"
+                    }
+                },
+                "__enter__": {
+                    "signature": "(self) -> 'SnowflakeConnection'",
+                    "parameters": [
+                        {
+                            "name": "self",
+                            "kind": "POSITIONAL_OR_KEYWORD",
+                            "annotation": null,
+                            "type": null,
+                            "default": null,
+                            "required": true
+                        }
+                    ],
+                    "return": {
+                        "annotation": "SnowflakeConnection",
+                        "type": "SnowflakeConnection",
+                        "category": "object"
+                    }
+                },
+                "__eq__": {
+                    "signature": "(self, value, /)",
+                    "parameters": [
+                        {
+                            "name": "self",
+                            "kind": "POSITIONAL_ONLY",
+                            "annotation": null,
+                            "type": null,
+                            "default": null,
+                            "required": true
+                        },
+                        {
+                            "name": "value",
+                            "kind": "POSITIONAL_ONLY",
+                            "annotation": null,
+                            "type": null,
+                            "default": null,
+                            "required": true
+                        }
+                    ],
+                    "return": {
+                        "annotation": null,
+                        "type": null,
+                        "category": "not_annotated"
+                    }
+                },
+                "__exit__": {
+                    "signature": "(self, exc_type: 'type[BaseException] | None', exc_val: 'BaseException | None', exc_tb: 'TracebackType | None') -> 'None'",
+                    "parameters": [
+                        {
+                            "name": "self",
+                            "kind": "POSITIONAL_OR_KEYWORD",
+                            "annotation": null,
+                            "type": null,
+                            "default": null,
+                            "required": true
+                        },
+                        {
+                            "name": "exc_type",
+                            "kind": "POSITIONAL_OR_KEYWORD",
+                            "annotation": "type[BaseException] | None",
+                            "type": "type[BaseException] | None",
+                            "default": null,
+                            "required": true
+                        },
+                        {
+                            "name": "exc_val",
+                            "kind": "POSITIONAL_OR_KEYWORD",
+                            "annotation": "BaseException | None",
+                            "type": "BaseException | None",
+                            "default": null,
+                            "required": true
+                        },
+                        {
+                            "name": "exc_tb",
+                            "kind": "POSITIONAL_OR_KEYWORD",
+                            "annotation": "TracebackType | None",
+                            "type": "TracebackType | None",
+                            "default": null,
+                            "required": true
+                        }
+                    ],
+                    "return": {
+                        "annotation": "None",
+                        "type": "None",
+                        "category": "void"
+                    }
+                },
+                "__format__": {
+                    "signature": "(self, format_spec, /)",
+                    "parameters": [
+                        {
+                            "name": "self",
+                            "kind": "POSITIONAL_ONLY",
+                            "annotation": null,
+                            "type": null,
+                            "default": null,
+                            "required": true
+                        },
+                        {
+                            "name": "format_spec",
+                            "kind": "POSITIONAL_ONLY",
+                            "annotation": null,
+                            "type": null,
+                            "default": null,
+                            "required": true
+                        }
+                    ],
+                    "return": {
+                        "annotation": null,
+                        "type": null,
+                        "category": "not_annotated"
+                    }
+                },
+                "__ge__": {
+                    "signature": "(self, value, /)",
+                    "parameters": [
+                        {
+                            "name": "self",
+                            "kind": "POSITIONAL_ONLY",
+                            "annotation": null,
+                            "type": null,
+                            "default": null,
+                            "required": true
+                        },
+                        {
+                            "name": "value",
+                            "kind": "POSITIONAL_ONLY",
+                            "annotation": null,
+                            "type": null,
+                            "default": null,
+                            "required": true
+                        }
+                    ],
+                    "return": {
+                        "annotation": null,
+                        "type": null,
+                        "category": "not_annotated"
+                    }
+                },
+                "__getattribute__": {
+                    "signature": "(self, name, /)",
+                    "parameters": [
+                        {
+                            "name": "self",
+                            "kind": "POSITIONAL_ONLY",
+                            "annotation": null,
+                            "type": null,
+                            "default": null,
+                            "required": true
+                        },
+                        {
+                            "name": "name",
+                            "kind": "POSITIONAL_ONLY",
+                            "annotation": null,
+                            "type": null,
+                            "default": null,
+                            "required": true
+                        }
+                    ],
+                    "return": {
+                        "annotation": null,
+                        "type": null,
+                        "category": "not_annotated"
+                    }
+                },
+                "__getstate__": {
+                    "signature": "(self, /)",
+                    "parameters": [
+                        {
+                            "name": "self",
+                            "kind": "POSITIONAL_ONLY",
+                            "annotation": null,
+                            "type": null,
+                            "default": null,
+                            "required": true
+                        }
+                    ],
+                    "return": {
+                        "annotation": null,
+                        "type": null,
+                        "category": "not_annotated"
+                    }
+                },
+                "__gt__": {
+                    "signature": "(self, value, /)",
+                    "parameters": [
+                        {
+                            "name": "self",
+                            "kind": "POSITIONAL_ONLY",
+                            "annotation": null,
+                            "type": null,
+                            "default": null,
+                            "required": true
+                        },
+                        {
+                            "name": "value",
+                            "kind": "POSITIONAL_ONLY",
+                            "annotation": null,
+                            "type": null,
+                            "default": null,
+                            "required": true
+                        }
+                    ],
+                    "return": {
+                        "annotation": null,
+                        "type": null,
+                        "category": "not_annotated"
+                    }
+                },
+                "__hash__": {
+                    "signature": "(self, /)",
+                    "parameters": [
+                        {
+                            "name": "self",
+                            "kind": "POSITIONAL_ONLY",
+                            "annotation": null,
+                            "type": null,
+                            "default": null,
+                            "required": true
+                        }
+                    ],
+                    "return": {
+                        "annotation": null,
+                        "type": null,
+                        "category": "not_annotated"
+                    }
+                },
+                "__init__": {
+                    "signature": "(self, connection_name: 'str | None' = None, connections_file_path: 'pathlib.Path | None' = None, **kwargs) -> 'None'",
+                    "parameters": [
+                        {
+                            "name": "self",
+                            "kind": "POSITIONAL_OR_KEYWORD",
+                            "annotation": null,
+                            "type": null,
+                            "default": null,
+                            "required": true
+                        },
+                        {
+                            "name": "connection_name",
+                            "kind": "POSITIONAL_OR_KEYWORD",
+                            "annotation": "str | None",
+                            "type": "str | None",
+                            "default": "None",
+                            "required": false
+                        },
+                        {
+                            "name": "connections_file_path",
+                            "kind": "POSITIONAL_OR_KEYWORD",
+                            "annotation": "pathlib.Path | None",
+                            "type": "Path | None",
+                            "default": "None",
+                            "required": false
+                        },
+                        {
+                            "name": "kwargs",
+                            "kind": "VAR_KEYWORD",
+                            "annotation": null,
+                            "type": null,
+                            "default": null,
+                            "required": false
+                        }
+                    ],
+                    "return": {
+                        "annotation": "None",
+                        "type": "None",
+                        "category": "void"
+                    }
+                },
+                "__init_subclass__": {
+                    "signature": "()",
+                    "parameters": [],
+                    "return": {
+                        "annotation": null,
+                        "type": null,
+                        "category": "not_annotated"
+                    }
+                },
+                "__le__": {
+                    "signature": "(self, value, /)",
+                    "parameters": [
+                        {
+                            "name": "self",
+                            "kind": "POSITIONAL_ONLY",
+                            "annotation": null,
+                            "type": null,
+                            "default": null,
+                            "required": true
+                        },
+                        {
+                            "name": "value",
+                            "kind": "POSITIONAL_ONLY",
+                            "annotation": null,
+                            "type": null,
+                            "default": null,
+                            "required": true
+                        }
+                    ],
+                    "return": {
+                        "annotation": null,
+                        "type": null,
+                        "category": "not_annotated"
+                    }
+                },
+                "__lt__": {
+                    "signature": "(self, value, /)",
+                    "parameters": [
+                        {
+                            "name": "self",
+                            "kind": "POSITIONAL_ONLY",
+                            "annotation": null,
+                            "type": null,
+                            "default": null,
+                            "required": true
+                        },
+                        {
+                            "name": "value",
+                            "kind": "POSITIONAL_ONLY",
+                            "annotation": null,
+                            "type": null,
+                            "default": null,
+                            "required": true
+                        }
+                    ],
+                    "return": {
+                        "annotation": null,
+                        "type": null,
+                        "category": "not_annotated"
+                    }
+                },
+                "__ne__": {
+                    "signature": "(self, value, /)",
+                    "parameters": [
+                        {
+                            "name": "self",
+                            "kind": "POSITIONAL_ONLY",
+                            "annotation": null,
+                            "type": null,
+                            "default": null,
+                            "required": true
+                        },
+                        {
+                            "name": "value",
+                            "kind": "POSITIONAL_ONLY",
+                            "annotation": null,
+                            "type": null,
+                            "default": null,
+                            "required": true
+                        }
+                    ],
+                    "return": {
+                        "annotation": null,
+                        "type": null,
+                        "category": "not_annotated"
+                    }
+                },
+                "__new__": {
+                    "signature": "(*args, **kwargs)",
+                    "parameters": [
+                        {
+                            "name": "args",
+                            "kind": "VAR_POSITIONAL",
+                            "annotation": null,
+                            "type": null,
+                            "default": null,
+                            "required": false
+                        },
+                        {
+                            "name": "kwargs",
+                            "kind": "VAR_KEYWORD",
+                            "annotation": null,
+                            "type": null,
+                            "default": null,
+                            "required": false
+                        }
+                    ],
+                    "return": {
+                        "annotation": null,
+                        "type": null,
+                        "category": "not_annotated"
+                    }
+                },
+                "__reduce__": {
+                    "signature": "(self, /)",
+                    "parameters": [
+                        {
+                            "name": "self",
+                            "kind": "POSITIONAL_ONLY",
+                            "annotation": null,
+                            "type": null,
+                            "default": null,
+                            "required": true
+                        }
+                    ],
+                    "return": {
+                        "annotation": null,
+                        "type": null,
+                        "category": "not_annotated"
+                    }
+                },
+                "__reduce_ex__": {
+                    "signature": "(self, protocol, /)",
+                    "parameters": [
+                        {
+                            "name": "self",
+                            "kind": "POSITIONAL_ONLY",
+                            "annotation": null,
+                            "type": null,
+                            "default": null,
+                            "required": true
+                        },
+                        {
+                            "name": "protocol",
+                            "kind": "POSITIONAL_ONLY",
+                            "annotation": null,
+                            "type": null,
+                            "default": null,
+                            "required": true
+                        }
+                    ],
+                    "return": {
+                        "annotation": null,
+                        "type": null,
+                        "category": "not_annotated"
+                    }
+                },
+                "__repr__": {
+                    "signature": "(self, /)",
+                    "parameters": [
+                        {
+                            "name": "self",
+                            "kind": "POSITIONAL_ONLY",
+                            "annotation": null,
+                            "type": null,
+                            "default": null,
+                            "required": true
+                        }
+                    ],
+                    "return": {
+                        "annotation": null,
+                        "type": null,
+                        "category": "not_annotated"
+                    }
+                },
+                "__setattr__": {
+                    "signature": "(self, name, value, /)",
+                    "parameters": [
+                        {
+                            "name": "self",
+                            "kind": "POSITIONAL_ONLY",
+                            "annotation": null,
+                            "type": null,
+                            "default": null,
+                            "required": true
+                        },
+                        {
+                            "name": "name",
+                            "kind": "POSITIONAL_ONLY",
+                            "annotation": null,
+                            "type": null,
+                            "default": null,
+                            "required": true
+                        },
+                        {
+                            "name": "value",
+                            "kind": "POSITIONAL_ONLY",
+                            "annotation": null,
+                            "type": null,
+                            "default": null,
+                            "required": true
+                        }
+                    ],
+                    "return": {
+                        "annotation": null,
+                        "type": null,
+                        "category": "not_annotated"
+                    }
+                },
+                "__sizeof__": {
+                    "signature": "(self, /)",
+                    "parameters": [
+                        {
+                            "name": "self",
+                            "kind": "POSITIONAL_ONLY",
+                            "annotation": null,
+                            "type": null,
+                            "default": null,
+                            "required": true
+                        }
+                    ],
+                    "return": {
+                        "annotation": null,
+                        "type": null,
+                        "category": "not_annotated"
+                    }
+                },
+                "__str__": {
+                    "signature": "(self, /)",
+                    "parameters": [
+                        {
+                            "name": "self",
+                            "kind": "POSITIONAL_ONLY",
+                            "annotation": null,
+                            "type": null,
+                            "default": null,
+                            "required": true
+                        }
+                    ],
+                    "return": {
+                        "annotation": null,
+                        "type": null,
+                        "category": "not_annotated"
+                    }
+                },
+                "__subclasshook__": {
+                    "signature": "(object, /)",
+                    "parameters": [
+                        {
+                            "name": "object",
+                            "kind": "POSITIONAL_ONLY",
+                            "annotation": null,
+                            "type": null,
+                            "default": null,
+                            "required": true
+                        }
+                    ],
+                    "return": {
+                        "annotation": null,
+                        "type": null,
+                        "category": "not_annotated"
+                    }
+                },
+                "_add_heartbeat": {
+                    "signature": "(self) -> 'None'",
+                    "parameters": [
+                        {
+                            "name": "self",
+                            "kind": "POSITIONAL_OR_KEYWORD",
+                            "annotation": null,
+                            "type": null,
+                            "default": null,
+                            "required": true
+                        }
+                    ],
+                    "return": {
+                        "annotation": "None",
+                        "type": "None",
+                        "category": "void"
+                    }
+                },
+                "_all_async_queries_finished": {
+                    "signature": "(self) -> 'bool'",
+                    "parameters": [
+                        {
+                            "name": "self",
+                            "kind": "POSITIONAL_OR_KEYWORD",
+                            "annotation": null,
+                            "type": null,
+                            "default": null,
+                            "required": true
+                        }
+                    ],
+                    "return": {
+                        "annotation": "bool",
+                        "type": "bool",
+                        "category": "object"
+                    }
+                },
+                "_authenticate": {
+                    "signature": "(self, auth_instance: 'AuthByPlugin')",
+                    "parameters": [
+                        {
+                            "name": "self",
+                            "kind": "POSITIONAL_OR_KEYWORD",
+                            "annotation": null,
+                            "type": null,
+                            "default": null,
+                            "required": true
+                        },
+                        {
+                            "name": "auth_instance",
+                            "kind": "POSITIONAL_OR_KEYWORD",
+                            "annotation": "AuthByPlugin",
+                            "type": "AuthByPlugin",
+                            "default": null,
+                            "required": true
+                        }
+                    ],
+                    "return": {
+                        "annotation": null,
+                        "type": null,
+                        "category": "not_annotated"
+                    }
+                },
+                "_cache_query_status": {
+                    "signature": "(self, sf_qid: 'str', status_ret: 'QueryStatus') -> 'None'",
+                    "parameters": [
+                        {
+                            "name": "self",
+                            "kind": "POSITIONAL_OR_KEYWORD",
+                            "annotation": null,
+                            "type": null,
+                            "default": null,
+                            "required": true
+                        },
+                        {
+                            "name": "sf_qid",
+                            "kind": "POSITIONAL_OR_KEYWORD",
+                            "annotation": "str",
+                            "type": "str",
+                            "default": null,
+                            "required": true
+                        },
+                        {
+                            "name": "status_ret",
+                            "kind": "POSITIONAL_OR_KEYWORD",
+                            "annotation": "QueryStatus",
+                            "type": "QueryStatus",
+                            "default": null,
+                            "required": true
+                        }
+                    ],
+                    "return": {
+                        "annotation": "None",
+                        "type": "None",
+                        "category": "void"
+                    }
+                },
+                "_cancel_heartbeat": {
+                    "signature": "(self) -> 'None'",
+                    "parameters": [
+                        {
+                            "name": "self",
+                            "kind": "POSITIONAL_OR_KEYWORD",
+                            "annotation": null,
+                            "type": null,
+                            "default": null,
+                            "required": true
+                        }
+                    ],
+                    "return": {
+                        "annotation": "None",
+                        "type": "None",
+                        "category": "void"
+                    }
+                },
+                "_cancel_query": {
+                    "signature": "(self, sql: 'str', request_id: 'UUID') -> 'dict[str, bool | None]'",
+                    "parameters": [
+                        {
+                            "name": "self",
+                            "kind": "POSITIONAL_OR_KEYWORD",
+                            "annotation": null,
+                            "type": null,
+                            "default": null,
+                            "required": true
+                        },
+                        {
+                            "name": "sql",
+                            "kind": "POSITIONAL_OR_KEYWORD",
+                            "annotation": "str",
+                            "type": "str",
+                            "default": null,
+                            "required": true
+                        },
+                        {
+                            "name": "request_id",
+                            "kind": "POSITIONAL_OR_KEYWORD",
+                            "annotation": "UUID",
+                            "type": "UUID",
+                            "default": null,
+                            "required": true
+                        }
+                    ],
+                    "return": {
+                        "annotation": "dict[str, bool | None]",
+                        "type": "dict[str, bool | None]",
+                        "category": "object"
+                    }
+                },
+                "_close_at_exit": {
+                    "signature": "(self)",
+                    "parameters": [
+                        {
+                            "name": "self",
+                            "kind": "POSITIONAL_OR_KEYWORD",
+                            "annotation": null,
+                            "type": null,
+                            "default": null,
+                            "required": true
+                        }
+                    ],
+                    "return": {
+                        "annotation": null,
+                        "type": null,
+                        "category": "not_annotated"
+                    }
+                },
+                "_detect_application": {
+                    "signature": "() -> 'None | str'",
+                    "parameters": [],
+                    "return": {
+                        "annotation": "None | str",
+                        "type": "None | str",
+                        "category": "object"
+                    }
+                },
+                "_format_query_for_log": {
+                    "signature": "(self, query: 'str') -> 'str'",
+                    "parameters": [
+                        {
+                            "name": "self",
+                            "kind": "POSITIONAL_OR_KEYWORD",
+                            "annotation": null,
+                            "type": null,
+                            "default": null,
+                            "required": true
+                        },
+                        {
+                            "name": "query",
+                            "kind": "POSITIONAL_OR_KEYWORD",
+                            "annotation": "str",
+                            "type": "str",
+                            "default": null,
+                            "required": true
+                        }
+                    ],
+                    "return": {
+                        "annotation": "str",
+                        "type": "str",
+                        "category": "object"
+                    }
+                },
+                "_get_query_status": {
+                    "signature": "(self, sf_qid: 'str') -> 'tuple[QueryStatus, dict[str, Any]]'",
+                    "parameters": [
+                        {
+                            "name": "self",
+                            "kind": "POSITIONAL_OR_KEYWORD",
+                            "annotation": null,
+                            "type": null,
+                            "default": null,
+                            "required": true
+                        },
+                        {
+                            "name": "sf_qid",
+                            "kind": "POSITIONAL_OR_KEYWORD",
+                            "annotation": "str",
+                            "type": "str",
+                            "default": null,
+                            "required": true
+                        }
+                    ],
+                    "return": {
+                        "annotation": "tuple[QueryStatus, dict[str, Any]]",
+                        "type": "tuple[QueryStatus, dict[str, Any]]",
+                        "category": "object"
+                    }
+                },
+                "_get_snowflake_type_and_binding": {
+                    "signature": "(self, cursor: 'SnowflakeCursor | None', v: 'tuple[str, Any] | Any') -> 'TypeAndBinding'",
+                    "parameters": [
+                        {
+                            "name": "self",
+                            "kind": "POSITIONAL_OR_KEYWORD",
+                            "annotation": null,
+                            "type": null,
+                            "default": null,
+                            "required": true
+                        },
+                        {
+                            "name": "cursor",
+                            "kind": "POSITIONAL_OR_KEYWORD",
+                            "annotation": "SnowflakeCursor | None",
+                            "type": "SnowflakeCursor | None",
+                            "default": null,
+                            "required": true
+                        },
+                        {
+                            "name": "v",
+                            "kind": "POSITIONAL_OR_KEYWORD",
+                            "annotation": "tuple[str, Any] | Any",
+                            "type": "tuple[str, Any] | Any",
+                            "default": null,
+                            "required": true
+                        }
+                    ],
+                    "return": {
+                        "annotation": "TypeAndBinding",
+                        "type": "TypeAndBinding",
+                        "category": "object"
+                    }
+                },
+                "_heartbeat_tick": {
+                    "signature": "(self) -> 'None'",
+                    "parameters": [
+                        {
+                            "name": "self",
+                            "kind": "POSITIONAL_OR_KEYWORD",
+                            "annotation": null,
+                            "type": null,
+                            "default": null,
+                            "required": true
+                        }
+                    ],
+                    "return": {
+                        "annotation": "None",
+                        "type": "None",
+                        "category": "void"
+                    }
+                },
+                "_log_connection_identifier_shape": {
+                    "signature": "(self)",
+                    "parameters": [
+                        {
+                            "name": "self",
+                            "kind": "POSITIONAL_OR_KEYWORD",
+                            "annotation": null,
+                            "type": null,
+                            "default": null,
+                            "required": true
+                        }
+                    ],
+                    "return": {
+                        "annotation": null,
+                        "type": null,
+                        "category": "not_annotated"
+                    }
+                },
+                "_log_minicore_import": {
+                    "signature": "(self)",
+                    "parameters": [
+                        {
+                            "name": "self",
+                            "kind": "POSITIONAL_OR_KEYWORD",
+                            "annotation": null,
+                            "type": null,
+                            "default": null,
+                            "required": true
+                        }
+                    ],
+                    "return": {
+                        "annotation": null,
+                        "type": null,
+                        "category": "not_annotated"
+                    }
+                },
+                "_log_nanoarrow_import": {
+                    "signature": "(self)",
+                    "parameters": [
+                        {
+                            "name": "self",
+                            "kind": "POSITIONAL_OR_KEYWORD",
+                            "annotation": null,
+                            "type": null,
+                            "default": null,
+                            "required": true
+                        }
+                    ],
+                    "return": {
+                        "annotation": null,
+                        "type": null,
+                        "category": "not_annotated"
+                    }
+                },
+                "_log_telemetry": {
+                    "signature": "(self, telemetry_data) -> 'None'",
+                    "parameters": [
+                        {
+                            "name": "self",
+                            "kind": "POSITIONAL_OR_KEYWORD",
+                            "annotation": null,
+                            "type": null,
+                            "default": null,
+                            "required": true
+                        },
+                        {
+                            "name": "telemetry_data",
+                            "kind": "POSITIONAL_OR_KEYWORD",
+                            "annotation": null,
+                            "type": null,
+                            "default": null,
+                            "required": true
+                        }
+                    ],
+                    "return": {
+                        "annotation": "None",
+                        "type": "None",
+                        "category": "void"
+                    }
+                },
+                "_log_telemetry_imported_packages": {
+                    "signature": "(self) -> 'None'",
+                    "parameters": [
+                        {
+                            "name": "self",
+                            "kind": "POSITIONAL_OR_KEYWORD",
+                            "annotation": null,
+                            "type": null,
+                            "default": null,
+                            "required": true
+                        }
+                    ],
+                    "return": {
+                        "annotation": "None",
+                        "type": "None",
+                        "category": "void"
+                    }
+                },
+                "_next_sequence_counter": {
+                    "signature": "(self) -> 'int'",
+                    "parameters": [
+                        {
+                            "name": "self",
+                            "kind": "POSITIONAL_OR_KEYWORD",
+                            "annotation": null,
+                            "type": null,
+                            "default": null,
+                            "required": true
+                        }
+                    ],
+                    "return": {
+                        "annotation": "int",
+                        "type": "int",
+                        "category": "object"
+                    }
+                },
+                "_ocsp_mode": {
+                    "signature": "(self) -> 'OCSPMode'",
+                    "parameters": [
+                        {
+                            "name": "self",
+                            "kind": "POSITIONAL_OR_KEYWORD",
+                            "annotation": null,
+                            "type": null,
+                            "default": null,
+                            "required": true
+                        }
+                    ],
+                    "return": {
+                        "annotation": "OCSPMode",
+                        "type": "OCSPMode",
+                        "category": "object"
+                    }
+                },
+                "_process_error_query_status": {
+                    "signature": "(self, sf_qid: 'str', status_resp: 'dict', error_message: 'str' = '', error_cls: 'type[Exception]' = <class 'snowflake.connector.errors.ProgrammingError'>) -> 'None'",
+                    "parameters": [
+                        {
+                            "name": "self",
+                            "kind": "POSITIONAL_OR_KEYWORD",
+                            "annotation": null,
+                            "type": null,
+                            "default": null,
+                            "required": true
+                        },
+                        {
+                            "name": "sf_qid",
+                            "kind": "POSITIONAL_OR_KEYWORD",
+                            "annotation": "str",
+                            "type": "str",
+                            "default": null,
+                            "required": true
+                        },
+                        {
+                            "name": "status_resp",
+                            "kind": "POSITIONAL_OR_KEYWORD",
+                            "annotation": "dict",
+                            "type": "dict",
+                            "default": null,
+                            "required": true
+                        },
+                        {
+                            "name": "error_message",
+                            "kind": "POSITIONAL_OR_KEYWORD",
+                            "annotation": "str",
+                            "type": "str",
+                            "default": "''",
+                            "required": false
+                        },
+                        {
+                            "name": "error_cls",
+                            "kind": "POSITIONAL_OR_KEYWORD",
+                            "annotation": "type[Exception]",
+                            "type": "type[Exception]",
+                            "default": "<class 'snowflake.connector.errors.ProgrammingError'>",
+                            "required": false
+                        }
+                    ],
+                    "return": {
+                        "annotation": "None",
+                        "type": "None",
+                        "category": "void"
+                    }
+                },
+                "_process_params_dict": {
+                    "signature": "(self, params: 'dict[Any, Any]', cursor: 'SnowflakeCursor | None' = None) -> 'dict'",
+                    "parameters": [
+                        {
+                            "name": "self",
+                            "kind": "POSITIONAL_OR_KEYWORD",
+                            "annotation": null,
+                            "type": null,
+                            "default": null,
+                            "required": true
+                        },
+                        {
+                            "name": "params",
+                            "kind": "POSITIONAL_OR_KEYWORD",
+                            "annotation": "dict[Any, Any]",
+                            "type": "dict[Any, Any]",
+                            "default": null,
+                            "required": true
+                        },
+                        {
+                            "name": "cursor",
+                            "kind": "POSITIONAL_OR_KEYWORD",
+                            "annotation": "SnowflakeCursor | None",
+                            "type": "SnowflakeCursor | None",
+                            "default": "None",
+                            "required": false
+                        }
+                    ],
+                    "return": {
+                        "annotation": "dict",
+                        "type": "dict",
+                        "category": "object"
+                    }
+                },
+                "_process_params_pyformat": {
+                    "signature": "(self, params: 'Any | Sequence[Any] | dict[Any, Any] | None', cursor: 'SnowflakeCursor | None' = None) -> 'tuple[Any] | dict[str, Any] | None'",
+                    "parameters": [
+                        {
+                            "name": "self",
+                            "kind": "POSITIONAL_OR_KEYWORD",
+                            "annotation": null,
+                            "type": null,
+                            "default": null,
+                            "required": true
+                        },
+                        {
+                            "name": "params",
+                            "kind": "POSITIONAL_OR_KEYWORD",
+                            "annotation": "Any | Sequence[Any] | dict[Any, Any] | None",
+                            "type": "Any | Sequence[Any] | dict[Any, Any] | None",
+                            "default": null,
+                            "required": true
+                        },
+                        {
+                            "name": "cursor",
+                            "kind": "POSITIONAL_OR_KEYWORD",
+                            "annotation": "SnowflakeCursor | None",
+                            "type": "SnowflakeCursor | None",
+                            "default": "None",
+                            "required": false
+                        }
+                    ],
+                    "return": {
+                        "annotation": "tuple[Any] | dict[str, Any] | None",
+                        "type": "tuple[Any] | dict[str, Any] | None",
+                        "category": "object"
+                    }
+                },
+                "_process_params_qmarks": {
+                    "signature": "(self, params: 'Sequence | None', cursor: 'SnowflakeCursor | None' = None) -> 'dict[str, dict[str, str]] | None'",
+                    "parameters": [
+                        {
+                            "name": "self",
+                            "kind": "POSITIONAL_OR_KEYWORD",
+                            "annotation": null,
+                            "type": null,
+                            "default": null,
+                            "required": true
+                        },
+                        {
+                            "name": "params",
+                            "kind": "POSITIONAL_OR_KEYWORD",
+                            "annotation": "Sequence | None",
+                            "type": "Sequence | None",
+                            "default": null,
+                            "required": true
+                        },
+                        {
+                            "name": "cursor",
+                            "kind": "POSITIONAL_OR_KEYWORD",
+                            "annotation": "SnowflakeCursor | None",
+                            "type": "SnowflakeCursor | None",
+                            "default": "None",
+                            "required": false
+                        }
+                    ],
+                    "return": {
+                        "annotation": "dict[str, dict[str, str]] | None",
+                        "type": "dict[str, dict[str, str]] | None",
+                        "category": "object"
+                    }
+                },
+                "_process_single_param": {
+                    "signature": "(self, param: 'Any') -> 'Any'",
+                    "parameters": [
+                        {
+                            "name": "self",
+                            "kind": "POSITIONAL_OR_KEYWORD",
+                            "annotation": null,
+                            "type": null,
+                            "default": null,
+                            "required": true
+                        },
+                        {
+                            "name": "param",
+                            "kind": "POSITIONAL_OR_KEYWORD",
+                            "annotation": "Any",
+                            "type": "Any",
+                            "default": null,
+                            "required": true
+                        }
+                    ],
+                    "return": {
+                        "annotation": "Any",
+                        "type": "Any",
+                        "category": "object"
+                    }
+                },
+                "_reauthenticate": {
+                    "signature": "(self)",
+                    "parameters": [
+                        {
+                            "name": "self",
+                            "kind": "POSITIONAL_OR_KEYWORD",
+                            "annotation": null,
+                            "type": null,
+                            "default": null,
+                            "required": true
+                        }
+                    ],
+                    "return": {
+                        "annotation": null,
+                        "type": null,
+                        "category": "not_annotated"
+                    }
+                },
+                "_update_parameters": {
+                    "signature": "(self, parameters: 'dict[str, str | int | bool]') -> 'None'",
+                    "parameters": [
+                        {
+                            "name": "self",
+                            "kind": "POSITIONAL_OR_KEYWORD",
+                            "annotation": null,
+                            "type": null,
+                            "default": null,
+                            "required": true
+                        },
+                        {
+                            "name": "parameters",
+                            "kind": "POSITIONAL_OR_KEYWORD",
+                            "annotation": "dict[str, str | int | bool]",
+                            "type": "dict[str, str | int | bool]",
+                            "default": null,
+                            "required": true
+                        }
+                    ],
+                    "return": {
+                        "annotation": "None",
+                        "type": "None",
+                        "category": "void"
+                    }
+                },
+                "_validate_account": {
+                    "signature": "(self, account_str)",
+                    "parameters": [
+                        {
+                            "name": "self",
+                            "kind": "POSITIONAL_OR_KEYWORD",
+                            "annotation": null,
+                            "type": null,
+                            "default": null,
+                            "required": true
+                        },
+                        {
+                            "name": "account_str",
+                            "kind": "POSITIONAL_OR_KEYWORD",
+                            "annotation": null,
+                            "type": null,
+                            "default": null,
+                            "required": true
+                        }
+                    ],
+                    "return": {
+                        "annotation": null,
+                        "type": null,
+                        "category": "not_annotated"
+                    }
+                },
+                "_validate_client_prefetch_threads": {
+                    "signature": "(self) -> 'int'",
+                    "parameters": [
+                        {
+                            "name": "self",
+                            "kind": "POSITIONAL_OR_KEYWORD",
+                            "annotation": null,
+                            "type": null,
+                            "default": null,
+                            "required": true
+                        }
+                    ],
+                    "return": {
+                        "annotation": "int",
+                        "type": "int",
+                        "category": "object"
+                    }
+                },
+                "_validate_client_session_keep_alive_heartbeat_frequency": {
+                    "signature": "(self) -> 'int'",
+                    "parameters": [
+                        {
+                            "name": "self",
+                            "kind": "POSITIONAL_OR_KEYWORD",
+                            "annotation": null,
+                            "type": null,
+                            "default": null,
+                            "required": true
+                        }
+                    ],
+                    "return": {
+                        "annotation": "int",
+                        "type": "int",
+                        "category": "object"
+                    }
+                },
+                "_write_params_to_byte_rows": {
+                    "signature": "(self, params: 'list[tuple[Any | tuple]]') -> 'list[bytes]'",
+                    "parameters": [
+                        {
+                            "name": "self",
+                            "kind": "POSITIONAL_OR_KEYWORD",
+                            "annotation": null,
+                            "type": null,
+                            "default": null,
+                            "required": true
+                        },
+                        {
+                            "name": "params",
+                            "kind": "POSITIONAL_OR_KEYWORD",
+                            "annotation": "list[tuple[Any | tuple]]",
+                            "type": "list[tuple[Any | tuple]]",
+                            "default": null,
+                            "required": true
+                        }
+                    ],
+                    "return": {
+                        "annotation": "list[bytes]",
+                        "type": "list[bytes]",
+                        "category": "object"
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,54 @@
+============================================================
+NORTHSTAR SOURCE DATA BASELINE AUDIT
+============================================================
+
+[ BILLING_CLAIMS_DIRTY ]
+
+Rows:                    48,483
+Columns:                     36
+Duplicate Rows:              97
+Duplicate CLAIM_IDs:          6
+Missing CLAIM_IDs:            0
+Missing PATIENT_IDs:         12
+Missing ENCOUNTER_IDs:        3
+Negative Claim Amounts:       4
+Payer > Total Amount:         7
+
+------------------------------------------------------------
+
+[ ENCOUNTER_INFO_DIRTY ]
+
+Rows:                    49,501
+Columns:                     12
+Duplicate Rows:              99
+Duplicate ENCOUNTER_IDs:      5
+Missing PATIENT_IDs:          8
+Missing PROVIDER_IDs:         2
+Invalid Encounter Dates:     11
+
+------------------------------------------------------------
+
+[ PATIENT_INFO_DIRTY ]
+
+Rows:                     1,175
+Columns:                     20
+Duplicate Rows:               4
+Duplicate PATIENT_IDs:        2
+Missing PATIENT_IDs:          0
+Invalid ZIP Codes:           17
+Invalid Emails:              13
+Invalid Birth Dates:          6
+
+------------------------------------------------------------
+
+[ PROVIDER_INFO_DIRTY ]
+
+Rows:                        50
+Columns:                      5
+Duplicate Rows:               0
+Duplicate PROVIDER_IDs:       0
+Missing PROVIDER_IDs:         0
+
+============================================================
+AUDIT COMPLETE
+============================================================

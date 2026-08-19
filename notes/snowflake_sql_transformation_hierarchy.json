@@ -1,0 +1,1069 @@
+{
+  "catalog": {
+    "name": "Snowflake SQL Transformation Hierarchy",
+    "version": "1.0",
+    "scope": "Core Snowflake SQL functions, expressions, clauses, and reusable patterns for data cleaning, validation, transformation, aggregation, and analytical data engineering.",
+    "not_exhaustive": true,
+    "excludes": [
+      "AI/ML functions",
+      "geospatial functions",
+      "specialized security/cryptography",
+      "administration commands",
+      "specialized statistical functions"
+    ],
+    "function_grammar": {
+      "basic": "FUNCTION_NAME(argument_1, argument_2, ...)",
+      "literal_test": "SELECT FUNCTION_NAME('sample_value');",
+      "column_preview": "SELECT original_column, FUNCTION_NAME(original_column) AS transformed_column FROM table_name;",
+      "table_transformation": "CREATE OR REPLACE TABLE target AS SELECT FUNCTION_NAME(source_column) AS cleaned_column FROM source;"
+    },
+    "summary": {
+      "category_count": 9,
+      "function_clause_count": 67,
+      "quality_pattern_count": 9
+    },
+    "categories": {
+      "string_cleaning": {
+        "description": "Clean, standardize, measure, split, and assemble text.",
+        "functions": {
+          "TRIM": {
+            "kind": "scalar_function",
+            "purpose": "Remove spaces or specified characters from both ends of text.",
+            "syntax": "TRIM(value [, characters])",
+            "arguments": [
+              "value",
+              "optional characters"
+            ],
+            "returns": "VARCHAR or NULL",
+            "literal_test": "SELECT '>' || TRIM('  PAT-1001  ') || '<';",
+            "northstar_example": "TRIM(patient_id) AS patient_id",
+            "common_mistake": "Does not remove spaces inside the value.",
+            "portability": "Widely portable"
+          },
+          "LTRIM": {
+            "kind": "scalar_function",
+            "purpose": "Remove spaces or specified characters from the left side.",
+            "syntax": "LTRIM(value [, characters])",
+            "arguments": [
+              "value",
+              "optional characters"
+            ],
+            "returns": "VARCHAR or NULL",
+            "literal_test": "SELECT LTRIM('   Dallas');",
+            "northstar_example": "LTRIM(address) AS address",
+            "common_mistake": "Cleans only the left side.",
+            "portability": "Widely portable"
+          },
+          "RTRIM": {
+            "kind": "scalar_function",
+            "purpose": "Remove spaces or specified characters from the right side.",
+            "syntax": "RTRIM(value [, characters])",
+            "arguments": [
+              "value",
+              "optional characters"
+            ],
+            "returns": "VARCHAR or NULL",
+            "literal_test": "SELECT RTRIM('Dallas   ');",
+            "northstar_example": "RTRIM(zip) AS zip",
+            "common_mistake": "Cleans only the right side.",
+            "portability": "Widely portable"
+          },
+          "LOWER": {
+            "kind": "scalar_function",
+            "purpose": "Convert text to lowercase.",
+            "syntax": "LOWER(value)",
+            "arguments": [
+              "value"
+            ],
+            "returns": "VARCHAR or NULL",
+            "literal_test": "SELECT LOWER('READY_FOR_SUBMISSION');",
+            "northstar_example": "LOWER(claim_status) AS claim_status",
+            "common_mistake": "Does not trim whitespace.",
+            "portability": "Widely portable"
+          },
+          "UPPER": {
+            "kind": "scalar_function",
+            "purpose": "Convert text to uppercase.",
+            "syntax": "UPPER(value)",
+            "arguments": [
+              "value"
+            ],
+            "returns": "VARCHAR or NULL",
+            "literal_test": "SELECT UPPER('tx');",
+            "northstar_example": "UPPER(TRIM(state)) AS state",
+            "common_mistake": "Does not trim whitespace.",
+            "portability": "Widely portable"
+          },
+          "INITCAP": {
+            "kind": "scalar_function",
+            "purpose": "Capitalize the first letter of words.",
+            "syntax": "INITCAP(value)",
+            "arguments": [
+              "value"
+            ],
+            "returns": "VARCHAR or NULL",
+            "literal_test": "SELECT INITCAP('jANE DOE');",
+            "northstar_example": "INITCAP(TRIM(first_name)) AS first_name",
+            "common_mistake": "Names with apostrophes or unusual capitalization may need review.",
+            "portability": "Common but not universal"
+          },
+          "REPLACE": {
+            "kind": "scalar_function",
+            "purpose": "Replace every occurrence of a literal substring.",
+            "syntax": "REPLACE(value, search, replacement)",
+            "arguments": [
+              "value",
+              "search",
+              "replacement"
+            ],
+            "returns": "VARCHAR or NULL",
+            "literal_test": "SELECT REPLACE('214-555-1212','-','');",
+            "northstar_example": "REPLACE(phone,'-','') AS phone_without_dashes",
+            "common_mistake": "Literal matching only; not regex.",
+            "portability": "Widely portable"
+          },
+          "TRANSLATE": {
+            "kind": "scalar_function",
+            "purpose": "Replace characters one-for-one.",
+            "syntax": "TRANSLATE(value, source_characters, target_characters)",
+            "arguments": [
+              "value",
+              "source characters",
+              "target characters"
+            ],
+            "returns": "VARCHAR or NULL",
+            "literal_test": "SELECT TRANSLATE('(214) 555-1212','()- ','');",
+            "northstar_example": "TRANSLATE(phone,'()- ','') AS phone_digits",
+            "common_mistake": "Works character-by-character.",
+            "portability": "Common but syntax varies"
+          },
+          "REGEXP_REPLACE": {
+            "kind": "scalar_function",
+            "purpose": "Replace text matching a regular expression.",
+            "syntax": "REGEXP_REPLACE(value, pattern [, replacement])",
+            "arguments": [
+              "value",
+              "pattern",
+              "optional replacement"
+            ],
+            "returns": "VARCHAR or NULL",
+            "literal_test": "SELECT REGEXP_REPLACE('(214) 555-1212','[^0-9]','');",
+            "northstar_example": "REGEXP_REPLACE(phone,'[^0-9]','') AS phone_digits",
+            "common_mistake": "Regex escaping can be confusing; test literals first.",
+            "portability": "Regex syntax varies"
+          },
+          "LENGTH": {
+            "kind": "scalar_function",
+            "purpose": "Count characters in text.",
+            "syntax": "LENGTH(value)",
+            "arguments": [
+              "value"
+            ],
+            "returns": "NUMBER or NULL",
+            "literal_test": "SELECT LENGTH('75024');",
+            "northstar_example": "LENGTH(TRIM(zip)) AS zip_length",
+            "common_mistake": "Counts characters, not storage bytes.",
+            "portability": "Widely portable; SQL Server often uses LEN"
+          },
+          "LEFT": {
+            "kind": "scalar_function",
+            "purpose": "Return characters from the left.",
+            "syntax": "LEFT(value, length)",
+            "arguments": [
+              "value",
+              "length"
+            ],
+            "returns": "VARCHAR or NULL",
+            "literal_test": "SELECT LEFT('PAT-1001',3);",
+            "northstar_example": "LEFT(TRIM(patient_id),3) AS patient_prefix",
+            "common_mistake": "Negative lengths vary by platform.",
+            "portability": "Common"
+          },
+          "RIGHT": {
+            "kind": "scalar_function",
+            "purpose": "Return characters from the right.",
+            "syntax": "RIGHT(value, length)",
+            "arguments": [
+              "value",
+              "length"
+            ],
+            "returns": "VARCHAR or NULL",
+            "literal_test": "SELECT RIGHT('PAT-1001',4);",
+            "northstar_example": "RIGHT(TRIM(member_id),4) AS member_id_last_four",
+            "common_mistake": "Not secure masking by itself.",
+            "portability": "Common"
+          },
+          "SUBSTR": {
+            "kind": "scalar_function",
+            "purpose": "Extract text from a starting position, optionally for a length.",
+            "syntax": "SUBSTR(value, start [, length])",
+            "arguments": [
+              "value",
+              "one-based start",
+              "optional length"
+            ],
+            "returns": "VARCHAR or NULL",
+            "literal_test": "SELECT SUBSTR('PAT-1001',1,3);",
+            "northstar_example": "SUBSTR(TRIM(patient_id),1,3) AS patient_prefix",
+            "common_mistake": "Snowflake positions are one-based.",
+            "portability": "Widely portable; name may be SUBSTRING"
+          },
+          "SPLIT_PART": {
+            "kind": "scalar_function",
+            "purpose": "Split text by a delimiter and return one selected part.",
+            "syntax": "SPLIT_PART(value, delimiter, part_number)",
+            "arguments": [
+              "value",
+              "delimiter",
+              "one-based part number"
+            ],
+            "returns": "VARCHAR or NULL",
+            "literal_test": "SELECT SPLIT_PART('john@example.com','@',2);",
+            "northstar_example": "SPLIT_PART(email,'@',2) AS email_domain",
+            "common_mistake": "Part numbering is one-based.",
+            "portability": "PostgreSQL-like; not universal"
+          },
+          "CONCAT": {
+            "kind": "scalar_function",
+            "purpose": "Join text values.",
+            "syntax": "CONCAT(value_1, value_2 [, ...])",
+            "arguments": [
+              "two or more values"
+            ],
+            "returns": "VARCHAR or NULL",
+            "literal_test": "SELECT CONCAT('PAT-','1001');",
+            "northstar_example": "CONCAT(first_name,' ',last_name) AS full_name",
+            "common_mistake": "NULL handling can surprise; consider COALESCE or CONCAT_WS.",
+            "portability": "Widely portable; || is common"
+          },
+          "CONCAT_WS": {
+            "kind": "scalar_function",
+            "purpose": "Join text values using a separator.",
+            "syntax": "CONCAT_WS(separator, value_1, value_2 [, ...])",
+            "arguments": [
+              "separator",
+              "values"
+            ],
+            "returns": "VARCHAR or NULL",
+            "literal_test": "SELECT CONCAT_WS(' ','Jane','Doe');",
+            "northstar_example": "CONCAT_WS(' ',first_name,last_name) AS full_name",
+            "common_mistake": "Check NULL behavior.",
+            "portability": "Common"
+          }
+        }
+      },
+      "string_validation": {
+        "description": "Test text against expected formats or contents.",
+        "functions": {
+          "STARTSWITH": {
+            "kind": "predicate_function",
+            "purpose": "Test whether text begins with a prefix.",
+            "syntax": "STARTSWITH(value, prefix)",
+            "arguments": [
+              "value",
+              "prefix"
+            ],
+            "returns": "BOOLEAN or NULL",
+            "literal_test": "SELECT STARTSWITH('PAT-1001','PAT-');",
+            "northstar_example": "STARTSWITH(TRIM(patient_id),'PAT-') AS valid_prefix",
+            "common_mistake": "Case-sensitive unless normalized.",
+            "portability": "Snowflake-specific name"
+          },
+          "ENDSWITH": {
+            "kind": "predicate_function",
+            "purpose": "Test whether text ends with a suffix.",
+            "syntax": "ENDSWITH(value, suffix)",
+            "arguments": [
+              "value",
+              "suffix"
+            ],
+            "returns": "BOOLEAN or NULL",
+            "literal_test": "SELECT ENDSWITH('claims.csv','.csv');",
+            "northstar_example": "ENDSWITH(LOWER(source_file),'.csv') AS is_csv",
+            "common_mistake": "Case-sensitive unless normalized.",
+            "portability": "Snowflake-specific name"
+          },
+          "CONTAINS": {
+            "kind": "predicate_function",
+            "purpose": "Test whether text contains a substring.",
+            "syntax": "CONTAINS(value, search)",
+            "arguments": [
+              "value",
+              "search"
+            ],
+            "returns": "BOOLEAN or NULL",
+            "literal_test": "SELECT CONTAINS('john@example.com','@');",
+            "northstar_example": "CONTAINS(email,'@') AS has_at_sign",
+            "common_mistake": "A substring match does not prove full validity.",
+            "portability": "Common concept; names vary"
+          },
+          "REGEXP_LIKE": {
+            "kind": "predicate_function",
+            "purpose": "Test whether text matches a regular-expression pattern.",
+            "syntax": "REGEXP_LIKE(value, pattern)",
+            "arguments": [
+              "value",
+              "pattern"
+            ],
+            "returns": "BOOLEAN or NULL",
+            "literal_test": "SELECT REGEXP_LIKE('75024','^[0-9]{5}$');",
+            "northstar_example": "REGEXP_LIKE(TRIM(zip),'^[0-9]{5}(-[0-9]{4})?$') AS valid_zip",
+            "common_mistake": "Regex syntax and escaping require testing.",
+            "portability": "Regex syntax varies"
+          }
+        }
+      },
+      "null_conditional": {
+        "description": "Handle missing values and derive values from business rules.",
+        "functions": {
+          "NULLIF": {
+            "kind": "scalar_function",
+            "purpose": "Return NULL when two expressions are equal; otherwise return the first.",
+            "syntax": "NULLIF(expression_1, expression_2)",
+            "arguments": [
+              "expression_1",
+              "expression_2"
+            ],
+            "returns": "Type of expression_1 or NULL",
+            "literal_test": "SELECT NULLIF(TRIM('   '),'');",
+            "northstar_example": "NULLIF(TRIM(member_id),'') AS member_id",
+            "common_mistake": "Does not replace existing NULL values.",
+            "portability": "Widely portable"
+          },
+          "COALESCE": {
+            "kind": "scalar_function",
+            "purpose": "Return the first non-NULL expression.",
+            "syntax": "COALESCE(expression_1, expression_2 [, ...])",
+            "arguments": [
+              "candidate expressions"
+            ],
+            "returns": "Compatible value type",
+            "literal_test": "SELECT COALESCE(NULL,'UNKNOWN');",
+            "northstar_example": "COALESCE(phone,'UNKNOWN') AS phone",
+            "common_mistake": "Blank strings are not NULL.",
+            "portability": "Widely portable"
+          },
+          "IFF": {
+            "kind": "conditional_function",
+            "purpose": "Return one value when a condition is true and another otherwise.",
+            "syntax": "IFF(condition, true_expression, false_expression)",
+            "arguments": [
+              "condition",
+              "true result",
+              "false result"
+            ],
+            "returns": "Compatible result type",
+            "literal_test": "SELECT IFF(125>100,'HIGH','NORMAL');",
+            "northstar_example": "IFF(total_claim_cost<0,'INVALID','VALID') AS amount_status",
+            "common_mistake": "Supports one condition; use CASE for several.",
+            "portability": "Snowflake-specific name"
+          },
+          "CASE": {
+            "kind": "conditional_expression",
+            "purpose": "Evaluate conditions in order and return the first matching result.",
+            "syntax": "CASE WHEN condition THEN result [WHEN ...] [ELSE result] END",
+            "arguments": [
+              "ordered conditions and results"
+            ],
+            "returns": "Compatible result type",
+            "literal_test": "SELECT CASE WHEN 150>100 THEN 'HIGH' ELSE 'NORMAL' END;",
+            "northstar_example": "CASE WHEN claim_id IS NULL THEN 'MISSING_CLAIM' WHEN total_claim_cost<0 THEN 'INVALID_AMOUNT' ELSE 'VALID' END AS validation_status",
+            "common_mistake": "Broad earlier conditions can hide later ones.",
+            "portability": "Widely portable"
+          },
+          "ZEROIFNULL": {
+            "kind": "scalar_function",
+            "purpose": "Replace a NULL numeric value with zero.",
+            "syntax": "ZEROIFNULL(expression)",
+            "arguments": [
+              "numeric expression"
+            ],
+            "returns": "NUMBER",
+            "literal_test": "SELECT ZEROIFNULL(NULL);",
+            "northstar_example": "ZEROIFNULL(payer_coverage) AS payer_coverage",
+            "common_mistake": "Can hide a missing-data problem.",
+            "portability": "Snowflake-specific"
+          },
+          "NULLIFZERO": {
+            "kind": "scalar_function",
+            "purpose": "Replace numeric zero with NULL.",
+            "syntax": "NULLIFZERO(expression)",
+            "arguments": [
+              "numeric expression"
+            ],
+            "returns": "NUMBER or NULL",
+            "literal_test": "SELECT NULLIFZERO(0);",
+            "northstar_example": "NULLIFZERO(total_claim_cost) AS nonzero_claim_cost",
+            "common_mistake": "Zero and missing are not always equivalent.",
+            "portability": "Snowflake-specific"
+          }
+        }
+      },
+      "conversion": {
+        "description": "Convert dirty source values into trusted data types.",
+        "functions": {
+          "CAST": {
+            "kind": "conversion_expression",
+            "purpose": "Convert a value to another data type; fail on invalid input.",
+            "syntax": "CAST(expression AS data_type)",
+            "arguments": [
+              "expression",
+              "target data type"
+            ],
+            "returns": "Target type",
+            "literal_test": "SELECT CAST('125.50' AS NUMBER(10,2));",
+            "northstar_example": "CAST(total_claim_cost AS NUMBER(12,2)) AS total_claim_cost",
+            "common_mistake": "Bad input can fail the statement.",
+            "portability": "Widely portable; :: is an alternative"
+          },
+          "TRY_CAST": {
+            "kind": "conversion_expression",
+            "purpose": "Convert supported string values; return NULL on failure.",
+            "syntax": "TRY_CAST(string_expression AS data_type)",
+            "arguments": [
+              "string expression",
+              "target type"
+            ],
+            "returns": "Target type or NULL",
+            "literal_test": "SELECT TRY_CAST('not-a-number' AS NUMBER);",
+            "northstar_example": "TRY_CAST(raw_total_claim_cost AS NUMBER(12,2)) AS total_claim_cost",
+            "common_mistake": "NULL can mean bad input or original NULL.",
+            "portability": "Common concept; syntax varies"
+          },
+          "TO_NUMBER": {
+            "kind": "conversion_function",
+            "purpose": "Convert a value to a fixed-point number.",
+            "syntax": "TO_NUMBER(expression [, format] [, precision, scale])",
+            "arguments": [
+              "expression",
+              "optional format",
+              "optional precision",
+              "optional scale"
+            ],
+            "returns": "NUMBER",
+            "literal_test": "SELECT TO_NUMBER('125.50','999.99');",
+            "northstar_example": "TO_NUMBER(raw_cost,'999999.99') AS total_claim_cost",
+            "common_mistake": "Invalid text raises an error.",
+            "portability": "Common concept; names vary"
+          },
+          "TRY_TO_NUMBER": {
+            "kind": "conversion_function",
+            "purpose": "Convert text to a number; return NULL on failure.",
+            "syntax": "TRY_TO_NUMBER(string_expression [, format] [, precision, scale])",
+            "arguments": [
+              "string expression",
+              "optional format",
+              "optional precision",
+              "optional scale"
+            ],
+            "returns": "NUMBER or NULL",
+            "literal_test": "SELECT TRY_TO_NUMBER('$125.50','$999.99');",
+            "northstar_example": "TRY_TO_NUMBER(raw_total_claim_cost,'999999.99') AS total_claim_cost",
+            "common_mistake": "Preserve a validation flag for failed conversions.",
+            "portability": "Snowflake-specific name"
+          },
+          "TO_DATE": {
+            "kind": "conversion_function",
+            "purpose": "Convert a supported value to DATE.",
+            "syntax": "TO_DATE(expression [, format])",
+            "arguments": [
+              "expression",
+              "optional format"
+            ],
+            "returns": "DATE",
+            "literal_test": "SELECT TO_DATE('2026-07-23','YYYY-MM-DD');",
+            "northstar_example": "TO_DATE(raw_birthdate,'YYYY-MM-DD') AS birthdate",
+            "common_mistake": "Invalid text can raise an error.",
+            "portability": "Common"
+          },
+          "TRY_TO_DATE": {
+            "kind": "conversion_function",
+            "purpose": "Convert text to DATE; return NULL on failure.",
+            "syntax": "TRY_TO_DATE(string_expression [, format])",
+            "arguments": [
+              "string expression",
+              "optional format"
+            ],
+            "returns": "DATE or NULL",
+            "literal_test": "SELECT TRY_TO_DATE('07/23/2026','MM/DD/YYYY');",
+            "northstar_example": "TRY_TO_DATE(raw_birthdate,'YYYY-MM-DD') AS birthdate",
+            "common_mistake": "Specify the expected format when possible.",
+            "portability": "Snowflake-specific name"
+          },
+          "TO_TIMESTAMP": {
+            "kind": "conversion_function",
+            "purpose": "Convert a value to a timestamp.",
+            "syntax": "TO_TIMESTAMP(expression [, format])",
+            "arguments": [
+              "expression",
+              "optional format"
+            ],
+            "returns": "TIMESTAMP",
+            "literal_test": "SELECT TO_TIMESTAMP('2026-07-23 08:30:00','YYYY-MM-DD HH24:MI:SS');",
+            "northstar_example": "TO_TIMESTAMP(raw_start_datetime,'YYYY-MM-DD HH24:MI:SS') AS start_datetime",
+            "common_mistake": "Be explicit about time-zone needs.",
+            "portability": "Common concept; variants NTZ/LTZ/TZ are Snowflake-specific"
+          },
+          "TRY_TO_TIMESTAMP": {
+            "kind": "conversion_function",
+            "purpose": "Convert text to a timestamp; return NULL on failure.",
+            "syntax": "TRY_TO_TIMESTAMP(string_expression [, format])",
+            "arguments": [
+              "string expression",
+              "optional format"
+            ],
+            "returns": "TIMESTAMP or NULL",
+            "literal_test": "SELECT TRY_TO_TIMESTAMP('bad date');",
+            "northstar_example": "TRY_TO_TIMESTAMP(raw_start_datetime,'YYYY-MM-DD HH24:MI:SS') AS start_datetime",
+            "common_mistake": "Preserve an error flag.",
+            "portability": "Snowflake-specific name"
+          },
+          "TO_VARCHAR": {
+            "kind": "conversion_function",
+            "purpose": "Convert a value to text, optionally using a format.",
+            "syntax": "TO_VARCHAR(expression [, format])",
+            "arguments": [
+              "expression",
+              "optional format"
+            ],
+            "returns": "VARCHAR or NULL",
+            "literal_test": "SELECT TO_VARCHAR(125.5,'999.00');",
+            "northstar_example": "TO_VARCHAR(claim_created_date,'YYYY-MM-DD') AS claim_created_date_text",
+            "common_mistake": "Do not store formatted text instead of proper dates or numbers.",
+            "portability": "Common; TO_CHAR is an alias"
+          }
+        }
+      },
+      "date_time": {
+        "description": "Extract, compare, shift, and group dates and timestamps.",
+        "functions": {
+          "DATEADD": {
+            "kind": "date_function",
+            "purpose": "Add or subtract date or time units.",
+            "syntax": "DATEADD(date_part, value, date_or_time_expression)",
+            "arguments": [
+              "date part",
+              "positive or negative amount",
+              "starting value"
+            ],
+            "returns": "DATE, TIME, or TIMESTAMP",
+            "literal_test": "SELECT DATEADD(day,7,'2026-07-23'::DATE);",
+            "northstar_example": "DATEADD(day,1,encounter_end_datetime) AS expected_claim_date",
+            "common_mistake": "Argument order differs across platforms.",
+            "portability": "Common concept; syntax varies"
+          },
+          "DATEDIFF": {
+            "kind": "date_function",
+            "purpose": "Calculate date/time boundaries between two values.",
+            "syntax": "DATEDIFF(date_part, start_expression, end_expression)",
+            "arguments": [
+              "date part",
+              "start",
+              "end"
+            ],
+            "returns": "NUMBER",
+            "literal_test": "SELECT DATEDIFF(day,'2026-07-20'::DATE,'2026-07-23'::DATE);",
+            "northstar_example": "DATEDIFF(day,claim_created_date,claim_submitted_date) AS submission_lag_days",
+            "common_mistake": "Calculates end minus start.",
+            "portability": "Common concept; syntax varies"
+          },
+          "DATE_PART": {
+            "kind": "date_function",
+            "purpose": "Extract a date or time component.",
+            "syntax": "DATE_PART(date_part, date_or_time_expression)",
+            "arguments": [
+              "date part",
+              "date/time value"
+            ],
+            "returns": "NUMBER",
+            "literal_test": "SELECT DATE_PART(year,'2026-07-23'::DATE);",
+            "northstar_example": "DATE_PART(hour,start_datetime) AS encounter_start_hour",
+            "common_mistake": "Not the same as converting a timestamp to DATE.",
+            "portability": "Common; EXTRACT is portable"
+          },
+          "DATE_TRUNC": {
+            "kind": "date_function",
+            "purpose": "Round a date/time down to the start of a unit.",
+            "syntax": "DATE_TRUNC(date_part, date_or_time_expression)",
+            "arguments": [
+              "date part",
+              "date/time value"
+            ],
+            "returns": "DATE, TIME, or TIMESTAMP",
+            "literal_test": "SELECT DATE_TRUNC(month,'2026-07-23'::DATE);",
+            "northstar_example": "DATE_TRUNC(month,encounter_end_datetime) AS encounter_month",
+            "common_mistake": "Week behavior can depend on settings.",
+            "portability": "Common in analytical SQL"
+          },
+          "LAST_DAY": {
+            "kind": "date_function",
+            "purpose": "Return the last day of a period, usually the month.",
+            "syntax": "LAST_DAY(date_or_timestamp_expression [, date_part])",
+            "arguments": [
+              "date/timestamp",
+              "optional date part"
+            ],
+            "returns": "DATE",
+            "literal_test": "SELECT LAST_DAY('2026-07-23'::DATE);",
+            "northstar_example": "LAST_DAY(coverage_start_date) AS coverage_start_month_end",
+            "common_mistake": "Specify the part when ambiguity matters.",
+            "portability": "Common"
+          },
+          "CURRENT_DATE": {
+            "kind": "context_function",
+            "purpose": "Return the current session date.",
+            "syntax": "CURRENT_DATE()",
+            "arguments": [],
+            "returns": "DATE",
+            "literal_test": "SELECT CURRENT_DATE();",
+            "northstar_example": "DATEDIFF(day,claim_submitted_date,CURRENT_DATE()) AS claim_age_days",
+            "common_mistake": "Depends on session time zone and run date.",
+            "portability": "Widely portable"
+          },
+          "CURRENT_TIMESTAMP": {
+            "kind": "context_function",
+            "purpose": "Return the current session timestamp.",
+            "syntax": "CURRENT_TIMESTAMP()",
+            "arguments": [],
+            "returns": "TIMESTAMP_LTZ",
+            "literal_test": "SELECT CURRENT_TIMESTAMP();",
+            "northstar_example": "CURRENT_TIMESTAMP() AS trusted_loaded_at",
+            "common_mistake": "Repeated runs produce different values.",
+            "portability": "Widely portable"
+          }
+        }
+      },
+      "numeric": {
+        "description": "Round, constrain, compare, and calculate numbers.",
+        "functions": {
+          "ROUND": {
+            "kind": "numeric_function",
+            "purpose": "Round a number to a scale.",
+            "syntax": "ROUND(expression [, scale])",
+            "arguments": [
+              "numeric expression",
+              "optional scale"
+            ],
+            "returns": "NUMBER",
+            "literal_test": "SELECT ROUND(125.678,2);",
+            "northstar_example": "ROUND(total_claim_cost-payer_coverage,2) AS patient_responsibility",
+            "common_mistake": "Rounding too early can accumulate differences.",
+            "portability": "Widely portable"
+          },
+          "TRUNC": {
+            "kind": "numeric_function",
+            "purpose": "Truncate digits without rounding.",
+            "syntax": "TRUNC(expression [, scale])",
+            "arguments": [
+              "numeric expression",
+              "optional scale"
+            ],
+            "returns": "NUMBER",
+            "literal_test": "SELECT TRUNC(125.678,2);",
+            "northstar_example": "TRUNC(total_claim_cost,2) AS truncated_cost",
+            "common_mistake": "Does not round.",
+            "portability": "Common"
+          },
+          "ABS": {
+            "kind": "numeric_function",
+            "purpose": "Return the absolute value.",
+            "syntax": "ABS(expression)",
+            "arguments": [
+              "numeric expression"
+            ],
+            "returns": "NUMBER",
+            "literal_test": "SELECT ABS(-125.50);",
+            "northstar_example": "ABS(total_claim_cost-expected_cost) AS cost_difference",
+            "common_mistake": "Can hide the direction of a difference.",
+            "portability": "Widely portable"
+          },
+          "CEIL": {
+            "kind": "numeric_function",
+            "purpose": "Round upward.",
+            "syntax": "CEIL(expression [, scale])",
+            "arguments": [
+              "numeric expression",
+              "optional scale"
+            ],
+            "returns": "NUMBER",
+            "literal_test": "SELECT CEIL(12.1);",
+            "northstar_example": "CEIL(submission_lag_hours/24.0) AS submission_lag_days",
+            "common_mistake": "Behavior with negatives can surprise.",
+            "portability": "Widely portable"
+          },
+          "FLOOR": {
+            "kind": "numeric_function",
+            "purpose": "Round downward.",
+            "syntax": "FLOOR(expression [, scale])",
+            "arguments": [
+              "numeric expression",
+              "optional scale"
+            ],
+            "returns": "NUMBER",
+            "literal_test": "SELECT FLOOR(12.9);",
+            "northstar_example": "FLOOR(patient_age_days/365.25) AS approximate_age",
+            "common_mistake": "Not identical to truncation for negatives.",
+            "portability": "Widely portable"
+          },
+          "GREATEST": {
+            "kind": "numeric_or_comparison_function",
+            "purpose": "Return the largest value from a list.",
+            "syntax": "GREATEST(expression_1, expression_2 [, ...])",
+            "arguments": [
+              "comparable expressions"
+            ],
+            "returns": "Compatible type",
+            "literal_test": "SELECT GREATEST(100,125,90);",
+            "northstar_example": "GREATEST(total_claim_cost,0) AS nonnegative_claim_cost",
+            "common_mistake": "NULL handling matters; capping can hide bad data.",
+            "portability": "Common"
+          },
+          "LEAST": {
+            "kind": "numeric_or_comparison_function",
+            "purpose": "Return the smallest value from a list.",
+            "syntax": "LEAST(expression_1, expression_2 [, ...])",
+            "arguments": [
+              "comparable expressions"
+            ],
+            "returns": "Compatible type",
+            "literal_test": "SELECT LEAST(100,125,90);",
+            "northstar_example": "LEAST(payer_coverage,total_claim_cost) AS capped_payer_coverage",
+            "common_mistake": "Capping can hide a quality issue.",
+            "portability": "Common"
+          }
+        }
+      },
+      "aggregation": {
+        "description": "Calculate data-quality and business metrics across rows.",
+        "functions": {
+          "COUNT": {
+            "kind": "aggregate_function",
+            "purpose": "Count rows or non-NULL values.",
+            "syntax": "COUNT(*) or COUNT(expression)",
+            "arguments": [
+              "optional expression"
+            ],
+            "returns": "NUMBER",
+            "literal_test": "SELECT COUNT(*) FROM VALUES (1),(2),(3);",
+            "northstar_example": "COUNT(*) AS total_encounters",
+            "common_mistake": "COUNT(column) excludes NULL; COUNT(*) does not.",
+            "portability": "Widely portable"
+          },
+          "COUNT_IF": {
+            "kind": "aggregate_function",
+            "purpose": "Count rows where a condition is true.",
+            "syntax": "COUNT_IF(condition)",
+            "arguments": [
+              "Boolean condition"
+            ],
+            "returns": "NUMBER",
+            "literal_test": "SELECT COUNT_IF(column1 IS NULL) FROM VALUES (1),(NULL) v(column1);",
+            "northstar_example": "COUNT_IF(claim_id IS NULL) AS encounters_without_claims",
+            "common_mistake": "NULL conditions are not true.",
+            "portability": "Snowflake and some cloud warehouses"
+          },
+          "SUM": {
+            "kind": "aggregate_function",
+            "purpose": "Add numeric values across rows.",
+            "syntax": "SUM(expression)",
+            "arguments": [
+              "numeric expression"
+            ],
+            "returns": "NUMBER",
+            "literal_test": "SELECT SUM(column1) FROM VALUES (10),(20) v(column1);",
+            "northstar_example": "SUM(total_claim_cost) AS claimed_amount",
+            "common_mistake": "NULLs are ignored.",
+            "portability": "Widely portable"
+          },
+          "AVG": {
+            "kind": "aggregate_function",
+            "purpose": "Calculate the mean of non-NULL values.",
+            "syntax": "AVG(expression)",
+            "arguments": [
+              "numeric expression"
+            ],
+            "returns": "NUMBER",
+            "literal_test": "SELECT AVG(column1) FROM VALUES (10),(20) v(column1);",
+            "northstar_example": "AVG(DATEDIFF(day,claim_created_date,claim_submitted_date)) AS average_submission_lag",
+            "common_mistake": "Ignoring NULLs can bias the result.",
+            "portability": "Widely portable"
+          },
+          "MIN": {
+            "kind": "aggregate_function",
+            "purpose": "Return the smallest non-NULL value.",
+            "syntax": "MIN(expression)",
+            "arguments": [
+              "comparable expression"
+            ],
+            "returns": "Compatible type",
+            "literal_test": "SELECT MIN(column1) FROM VALUES (10),(20) v(column1);",
+            "northstar_example": "MIN(start_datetime) AS earliest_encounter",
+            "common_mistake": "Text uses lexical ordering.",
+            "portability": "Widely portable"
+          },
+          "MAX": {
+            "kind": "aggregate_function",
+            "purpose": "Return the largest non-NULL value.",
+            "syntax": "MAX(expression)",
+            "arguments": [
+              "comparable expression"
+            ],
+            "returns": "Compatible type",
+            "literal_test": "SELECT MAX(column1) FROM VALUES (10),(20) v(column1);",
+            "northstar_example": "MAX(end_datetime) AS latest_encounter",
+            "common_mistake": "Text uses lexical ordering.",
+            "portability": "Widely portable"
+          },
+          "LISTAGG": {
+            "kind": "aggregate_function",
+            "purpose": "Combine multiple row values into one delimited string.",
+            "syntax": "LISTAGG(expression [, delimiter]) WITHIN GROUP (ORDER BY ...)",
+            "arguments": [
+              "expression",
+              "optional delimiter",
+              "order"
+            ],
+            "returns": "VARCHAR",
+            "literal_test": "SELECT LISTAGG(column1,', ') WITHIN GROUP (ORDER BY column1) FROM VALUES ('A'),('B') v(column1);",
+            "northstar_example": "LISTAGG(validation_error,'; ') WITHIN GROUP (ORDER BY validation_error) AS validation_errors",
+            "common_mistake": "Large groups can create very long strings.",
+            "portability": "Common in warehouses; syntax varies"
+          }
+        }
+      },
+      "window": {
+        "description": "Compare, rank, and deduplicate related rows without collapsing them.",
+        "functions": {
+          "ROW_NUMBER": {
+            "kind": "window_function",
+            "purpose": "Assign a unique sequence number within an ordered partition.",
+            "syntax": "ROW_NUMBER() OVER ([PARTITION BY ...] ORDER BY ...)",
+            "arguments": [
+              "optional partition",
+              "required order"
+            ],
+            "returns": "NUMBER",
+            "literal_test": "SELECT column1,ROW_NUMBER() OVER(ORDER BY column1) rn FROM VALUES ('A'),('B') v(column1);",
+            "northstar_example": "ROW_NUMBER() OVER(PARTITION BY encounter_id ORDER BY claim_created_date DESC) AS claim_rank",
+            "common_mistake": "Use deterministic ORDER BY columns.",
+            "portability": "Widely portable"
+          },
+          "RANK": {
+            "kind": "window_function",
+            "purpose": "Rank rows with gaps after ties.",
+            "syntax": "RANK() OVER ([PARTITION BY ...] ORDER BY ...)",
+            "arguments": [
+              "optional partition",
+              "order"
+            ],
+            "returns": "NUMBER",
+            "literal_test": "SELECT column1,RANK() OVER(ORDER BY column1 DESC) r FROM VALUES (10),(10),(5) v(column1);",
+            "northstar_example": "RANK() OVER(PARTITION BY provider_id ORDER BY total_claim_cost DESC) AS cost_rank",
+            "common_mistake": "Ties create gaps.",
+            "portability": "Widely portable"
+          },
+          "DENSE_RANK": {
+            "kind": "window_function",
+            "purpose": "Rank rows without gaps after ties.",
+            "syntax": "DENSE_RANK() OVER ([PARTITION BY ...] ORDER BY ...)",
+            "arguments": [
+              "optional partition",
+              "order"
+            ],
+            "returns": "NUMBER",
+            "literal_test": "SELECT column1,DENSE_RANK() OVER(ORDER BY column1 DESC) r FROM VALUES (10),(10),(5) v(column1);",
+            "northstar_example": "DENSE_RANK() OVER(PARTITION BY patient_id ORDER BY encounter_end_datetime) AS encounter_sequence",
+            "common_mistake": "Does not uniquely identify tied rows.",
+            "portability": "Widely portable"
+          },
+          "LAG": {
+            "kind": "window_function",
+            "purpose": "Return a value from a prior row.",
+            "syntax": "LAG(expression [, offset [, default]]) OVER ([PARTITION BY ...] ORDER BY ...)",
+            "arguments": [
+              "expression",
+              "optional offset",
+              "optional default",
+              "window"
+            ],
+            "returns": "Same type as expression",
+            "literal_test": "SELECT column1,LAG(column1) OVER(ORDER BY column1) prev FROM VALUES (1),(2) v(column1);",
+            "northstar_example": "LAG(claim_status) OVER(PARTITION BY claim_id ORDER BY status_datetime) AS previous_status",
+            "common_mistake": "Previous depends entirely on ORDER BY.",
+            "portability": "Widely portable"
+          },
+          "LEAD": {
+            "kind": "window_function",
+            "purpose": "Return a value from a following row.",
+            "syntax": "LEAD(expression [, offset [, default]]) OVER ([PARTITION BY ...] ORDER BY ...)",
+            "arguments": [
+              "expression",
+              "optional offset",
+              "optional default",
+              "window"
+            ],
+            "returns": "Same type as expression",
+            "literal_test": "SELECT column1,LEAD(column1) OVER(ORDER BY column1) next FROM VALUES (1),(2) v(column1);",
+            "northstar_example": "LEAD(start_datetime) OVER(PARTITION BY patient_id ORDER BY start_datetime) AS next_encounter_start",
+            "common_mistake": "Next depends entirely on ORDER BY.",
+            "portability": "Widely portable"
+          },
+          "QUALIFY": {
+            "kind": "query_clause",
+            "purpose": "Filter after window functions are calculated.",
+            "syntax": "QUALIFY window_condition",
+            "arguments": [
+              "window condition"
+            ],
+            "returns": "Filtered rows",
+            "literal_test": "SELECT column1,ROW_NUMBER() OVER(ORDER BY column1) rn FROM VALUES ('A'),('B') v(column1) QUALIFY rn=1;",
+            "northstar_example": "QUALIFY ROW_NUMBER() OVER(PARTITION BY encounter_id ORDER BY claim_created_date DESC)=1",
+            "common_mistake": "It is a clause, not a function.",
+            "portability": "Snowflake and selected analytical databases"
+          }
+        }
+      },
+      "semi_structured": {
+        "description": "Parse and expand JSON-like VARIANT, ARRAY, and OBJECT data.",
+        "functions": {
+          "PARSE_JSON": {
+            "kind": "semi_structured_function",
+            "purpose": "Parse JSON text into VARIANT.",
+            "syntax": "PARSE_JSON(string_expression)",
+            "arguments": [
+              "JSON text"
+            ],
+            "returns": "VARIANT or NULL",
+            "literal_test": "SELECT PARSE_JSON('{\"status\":\"valid\"}');",
+            "northstar_example": "PARSE_JSON(raw_payload) AS payload",
+            "common_mistake": "Invalid JSON raises an error.",
+            "portability": "Snowflake-specific name"
+          },
+          "TRY_PARSE_JSON": {
+            "kind": "semi_structured_function",
+            "purpose": "Parse JSON text and return NULL on failure.",
+            "syntax": "TRY_PARSE_JSON(string_expression)",
+            "arguments": [
+              "JSON text"
+            ],
+            "returns": "VARIANT or NULL",
+            "literal_test": "SELECT TRY_PARSE_JSON('{bad json}');",
+            "northstar_example": "TRY_PARSE_JSON(raw_payload) AS payload",
+            "common_mistake": "Preserve a parse-error flag.",
+            "portability": "Snowflake-specific"
+          },
+          "OBJECT_CONSTRUCT": {
+            "kind": "semi_structured_function",
+            "purpose": "Create an OBJECT from key-value pairs.",
+            "syntax": "OBJECT_CONSTRUCT(key_1, value_1 [, ...])",
+            "arguments": [
+              "key-value pairs"
+            ],
+            "returns": "OBJECT",
+            "literal_test": "SELECT OBJECT_CONSTRUCT('patient_id','PAT-1001','status','VALID');",
+            "northstar_example": "OBJECT_CONSTRUCT('encounter_id',encounter_id,'errors',validation_errors) AS validation_payload",
+            "common_mistake": "SQL NULL pairs may be omitted.",
+            "portability": "Snowflake-specific"
+          },
+          "ARRAY_CONSTRUCT": {
+            "kind": "semi_structured_function",
+            "purpose": "Create an ARRAY from expressions.",
+            "syntax": "ARRAY_CONSTRUCT(expression_1 [, ...])",
+            "arguments": [
+              "expressions"
+            ],
+            "returns": "ARRAY",
+            "literal_test": "SELECT ARRAY_CONSTRUCT('MISSING_PAYER','BAD_ZIP');",
+            "northstar_example": "ARRAY_CONSTRUCT(patient_error,encounter_error,claim_error) AS validation_errors",
+            "common_mistake": "Inspect NULL-like values carefully.",
+            "portability": "Snowflake-specific"
+          },
+          "FLATTEN": {
+            "kind": "table_function",
+            "purpose": "Expand ARRAY, OBJECT, or VARIANT values into rows.",
+            "syntax": "TABLE(FLATTEN(INPUT => expression [, PATH => path] [, OUTER => TRUE|FALSE] [, RECURSIVE => TRUE|FALSE]))",
+            "arguments": [
+              "input",
+              "optional path",
+              "optional flags"
+            ],
+            "returns": "Rows",
+            "literal_test": "SELECT value FROM TABLE(FLATTEN(INPUT=>PARSE_JSON('[\"A\",\"B\"]')));",
+            "northstar_example": "SELECT encounter_id,f.value::STRING FROM trusted_encounters,LATERAL FLATTEN(INPUT=>validation_errors) f",
+            "common_mistake": "Belongs in FROM, usually with LATERAL.",
+            "portability": "Snowflake-specific syntax"
+          }
+        }
+      }
+    },
+    "quality_patterns": {
+      "outside_whitespace": {
+        "detect": "column_name IS NOT NULL AND column_name <> TRIM(column_name)",
+        "transform": "TRIM(column_name)",
+        "northstar": "patient_id IS NOT NULL AND patient_id <> TRIM(patient_id)"
+      },
+      "blank_to_null": {
+        "detect": "column_name IS NOT NULL AND TRIM(column_name) = ''",
+        "transform": "NULLIF(TRIM(column_name), '')",
+        "northstar": "NULLIF(TRIM(member_id), '') AS member_id"
+      },
+      "case_standardization": {
+        "detect": "column_name <> UPPER(TRIM(column_name))",
+        "transform": "UPPER(TRIM(column_name))",
+        "northstar": "UPPER(TRIM(state)) AS state"
+      },
+      "safe_numeric_conversion": {
+        "detect": "raw_column IS NOT NULL AND TRY_TO_NUMBER(raw_column) IS NULL",
+        "transform": "TRY_TO_NUMBER(raw_column)",
+        "northstar": "TRY_TO_NUMBER(raw_total_claim_cost, '999999.99') AS total_claim_cost"
+      },
+      "safe_date_conversion": {
+        "detect": "raw_column IS NOT NULL AND TRY_TO_DATE(raw_column, 'YYYY-MM-DD') IS NULL",
+        "transform": "TRY_TO_DATE(raw_column, 'YYYY-MM-DD')",
+        "northstar": "TRY_TO_DATE(raw_birthdate, 'YYYY-MM-DD') AS birthdate"
+      },
+      "duplicate_detection": {
+        "detect": "COUNT(*) OVER (PARTITION BY business_key) > 1",
+        "transform": "ROW_NUMBER() OVER (PARTITION BY business_key ORDER BY preferred_timestamp DESC)",
+        "northstar": "ROW_NUMBER() OVER (PARTITION BY encounter_id ORDER BY claim_created_date DESC) AS claim_rank"
+      },
+      "missing_relationship": {
+        "detect": "LEFT JOIN related_table r ON source.foreign_key = r.primary_key WHERE r.primary_key IS NULL",
+        "transform": "Quarantine or correct the relationship; do not fabricate a key.",
+        "northstar": "Find encounters whose patient_id has no patient_info row."
+      },
+      "invalid_amount_relationship": {
+        "detect": "payer_coverage > total_claim_cost OR total_claim_cost - payer_coverage < 0",
+        "transform": "Preserve and quarantine unless a documented business rule permits correction.",
+        "northstar": "ROUND(total_claim_cost - payer_coverage, 2) AS patient_responsibility"
+      },
+      "submission_lag": {
+        "detect": "DATEDIFF(day, claim_created_date, claim_submitted_date) > threshold_days",
+        "transform": "Create a business-rule flag or metric.",
+        "northstar": "DATEDIFF(day, claim_created_date, claim_submitted_date) AS submission_lag_days"
+      }
+    }
+  },
+  "sources": [
+    {
+      "title": "Snowflake String & Binary Functions",
+      "url": "https://docs.snowflake.com/en/sql-reference/functions-string"
+    },
+    {
+      "title": "Snowflake Conversion Functions",
+      "url": "https://docs.snowflake.com/en/sql-reference/functions-conversion"
+    },
+    {
+      "title": "Snowflake Date & Time Functions",
+      "url": "https://docs.snowflake.com/en/sql-reference/functions-date-time"
+    },
+    {
+      "title": "Snowflake Window Functions",
+      "url": "https://docs.snowflake.com/en/sql-reference/functions-window"
+    },
+    {
+      "title": "Snowflake All Functions",
+      "url": "https://docs.snowflake.com/en/sql-reference/functions-all"
+    }
+  ]
+}
