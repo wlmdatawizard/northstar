@@ -343,8 +343,8 @@ def print_reconciliation_results(reconciliation_results):
         print(
             f"{table_name:<25} "
             f"Source: {source_count:<8} "
-            f"Before: {before_count:<8} "
-            f"After: {after_count:<8} "
+            f"Before Load: {before_count:<8} "
+            f"After Load: {after_count:<8} "
             f"Loaded: {loaded_count:<8} "
             f"{status}"
         )
